@@ -15,10 +15,7 @@
 ## Getting Started
 
 ```
-cd ~/Developer
-git clone https://github.com/some/SendMoneyApp.git
-cd ./TodoList
-xed .
+git clone https://github.com/DmitryP0l/SendMoneyApp.git
 ```
 ## Features
 - ...
