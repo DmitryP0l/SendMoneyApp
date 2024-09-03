@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  WelcomeViewController.swift
 //  SendMoneyApp
 //
 //  Created by Dmitry P on 20.08.24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class WelcomeViewController: UIViewController {
 	
 	// MARK: - Constants
 	
@@ -136,6 +136,9 @@ class ViewController: UIViewController {
 					sender.transform = CGAffineTransform.identity
 				}
 			})
+		
+		let registrationVC = RegistrationViewController()
+		navigationController?.pushViewController(registrationVC, animated: true)
 	}
 }
 

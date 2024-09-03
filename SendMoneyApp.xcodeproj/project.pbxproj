@@ -9,12 +9,13 @@
 /* Begin PBXBuildFile section */
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
-		0AB607112C749BCE001916AE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* ViewController.swift */; };
+		0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeViewController.swift */; };
 		0AB607162C749BD2001916AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB607152C749BD2001916AE /* Assets.xcassets */; };
 		0AB607192C749BD2001916AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB607172C749BD2001916AE /* LaunchScreen.storyboard */; };
 		0AB607242C749BD3001916AE /* SendMoneyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607232C749BD3001916AE /* SendMoneyAppTests.swift */; };
 		0AB6072E2C749BD3001916AE /* SendMoneyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */; };
 		0AB607302C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */; };
+		0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6073C2C87554B001916AE /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +39,7 @@
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AB607102C749BCE001916AE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0AB607102C749BCE001916AE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		0AB607152C749BD2001916AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB607182C749BD2001916AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AB6071A2C749BD2001916AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		0AB607292C749BD3001916AE /* SendMoneyAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SendMoneyAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITests.swift; sourceTree = "<group>"; };
 		0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0AB6073C2C87554B001916AE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +101,10 @@
 			children = (
 				0AB6070C2C749BCE001916AE /* AppDelegate.swift */,
 				0AB6070E2C749BCE001916AE /* SceneDelegate.swift */,
-				0AB607102C749BCE001916AE /* ViewController.swift */,
-				0AB607152C749BD2001916AE /* Assets.xcassets */,
-				0AB607172C749BD2001916AE /* LaunchScreen.storyboard */,
+				0AB607102C749BCE001916AE /* WelcomeViewController.swift */,
+				0AB6073C2C87554B001916AE /* RegistrationViewController.swift */,
 				0AB6071A2C749BD2001916AE /* Info.plist */,
+				0AB6073E2C875597001916AE /* Support Files */,
 			);
 			path = SendMoneyApp;
 			sourceTree = "<group>";
@@ -122,6 +124,15 @@
 				0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */,
 			);
 			path = SendMoneyAppUITests;
+			sourceTree = "<group>";
+		};
+		0AB6073E2C875597001916AE /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				0AB607152C749BD2001916AE /* Assets.xcassets */,
+				0AB607172C749BD2001916AE /* LaunchScreen.storyboard */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +265,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AB607112C749BCE001916AE /* ViewController.swift in Sources */,
+				0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
+				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
 				0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
