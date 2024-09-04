@@ -10,7 +10,7 @@ import UIKit
 final class WelcomeViewController: UIViewController {
 	
 	// MARK: - Constants
-	
+	/// инициализация и настройка UI элементов
 	private var startingViewContainer: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -56,11 +56,10 @@ final class WelcomeViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScreen()
-		
 	}
 	
 	// MARK: - Private methods
-	///  Метод настройки всего экрана
+	///  Метод настройки всего экрана приветствия
 	private func setupScreen() {
 		
 		view.backgroundColor = .darkGray
@@ -69,6 +68,7 @@ final class WelcomeViewController: UIViewController {
 		setupInformationLabel()
 		setupStartButton()
 	}
+	
 	/// Настройка ограничений (constrains) для welcomeLabel
 	private func setupWelcomeLabel() {
 		
@@ -125,6 +125,7 @@ final class WelcomeViewController: UIViewController {
 	}
 	
 	// MARK: - Actions
+	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход между экранами через NavigationController
 	@objc func buttonTapped(sender: UIButton) {
 		UIView.animate(
 			withDuration: 0.1,
