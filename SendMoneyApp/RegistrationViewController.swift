@@ -22,7 +22,7 @@ final class RegistrationViewController: UIViewController {
 	private var logInLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Log In"
+		label.text = "Log in"
 		label.textAlignment = .left
 		label.textColor = .white
 		label.font = label.font.withSize(60)
@@ -30,7 +30,33 @@ final class RegistrationViewController: UIViewController {
 		return label
 	}()
 	
+	private var logInTextField: UITextField = {
+		let textField = UITextField()
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		textField.placeholder = "Login"
+		textField.textColor = .darkGray
+		textField.font = UIFont.systemFont(ofSize: 16)
+		textField.textAlignment = .center
+		textField.borderStyle = .roundedRect
+		textField.keyboardType = .default
+		textField.returnKeyType = .continue
+		textField.clearButtonMode = .whileEditing
+		return textField
+	}()
 	
+	private var passwordTextField: UITextField = {
+		let textField = UITextField()
+		textField.translatesAutoresizingMaskIntoConstraints = false
+		textField.placeholder = "Password"
+		textField.textColor = .darkGray
+		textField.font = UIFont.systemFont(ofSize: 16)
+		textField.textAlignment = .center
+		textField.borderStyle = .roundedRect
+		textField.keyboardType = .default
+		textField.returnKeyType = .done
+		textField.clearButtonMode = .whileEditing
+		return textField
+	}()
 	
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
@@ -45,6 +71,8 @@ final class RegistrationViewController: UIViewController {
 		view.backgroundColor = .darkGray
 		setupRegistrationViewContainer()
 		setupLogInLabel()
+		setupLogInTextField()
+		setupPasswordTextField()
 	}
 	/// Настройка ограничений (constrains) для registrationViewContainer
 	private func setupRegistrationViewContainer() {
@@ -68,5 +96,34 @@ final class RegistrationViewController: UIViewController {
 			logInLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
 			logInLabel.bottomAnchor.constraint(equalTo: registrationViewContainer.topAnchor, constant: -20)
 		])
+	}
+	
+	/// Настройка ограничений (constrains) для loginTextField
+	private func setupLogInTextField() {
+		registrationViewContainer.addSubview(logInTextField)
+		
+		NSLayoutConstraint.activate([
+			logInTextField.centerXAnchor.constraint(equalTo: registrationViewContainer.centerXAnchor),
+			logInTextField.topAnchor.constraint(equalTo: registrationViewContainer.topAnchor, constant: 40),
+			logInTextField.widthAnchor.constraint(equalToConstant: 300),
+			logInTextField.heightAnchor.constraint(equalToConstant: 40)
+		])
+		logInTextField.layer.cornerRadius = 20
+		logInTextField.clipsToBounds = true
+	}
+	
+	/// Настройка ограничений (constrains) для passwordTextField
+	private func setupPasswordTextField() {
+		registrationViewContainer.addSubview(passwordTextField)
+		
+		NSLayoutConstraint.activate([
+			passwordTextField.centerXAnchor.constraint(equalTo: registrationViewContainer.centerXAnchor),
+			passwordTextField.topAnchor.constraint(equalTo: logInTextField.bottomAnchor, constant: 20),
+			passwordTextField.widthAnchor.constraint(equalToConstant: 300),
+			passwordTextField.heightAnchor.constraint(equalToConstant: 40)
+		])
+		passwordTextField.layer.cornerRadius = 20
+		passwordTextField.clipsToBounds = true
+		
 	}
 }
