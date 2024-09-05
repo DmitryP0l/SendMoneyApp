@@ -62,6 +62,7 @@ final class RegistrationViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScreen()
+		keyboardNotification()
 	}
 	
 	// MARK: - Private methods
@@ -74,6 +75,11 @@ final class RegistrationViewController: UIViewController {
 		setupLogInTextField()
 		setupPasswordTextField()
 	}
+	///  Регистрация уведомлений на появление/скрытие клавиатуры
+	private func keyboardNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+	}
 	/// Настройка ограничений (constrains) для registrationViewContainer
 	private func setupRegistrationViewContainer() {
 		view.addSubview(registrationViewContainer)
@@ -82,7 +88,7 @@ final class RegistrationViewController: UIViewController {
 			registrationViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			registrationViewContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			registrationViewContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-			registrationViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6)
+			registrationViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3) //0.6
 		])
 		
 		registrationViewContainer.layer.cornerRadius = 60
@@ -124,6 +130,24 @@ final class RegistrationViewController: UIViewController {
 		])
 		passwordTextField.layer.cornerRadius = 20
 		passwordTextField.clipsToBounds = true
-		
 	}
+	///  методы, отрабатывающие по нотификации на появление и скрытие клавиатуры, и изменяющие размер self.view
+	@objc func keyboardWillShow(notification: Notification) {
+		guard let userInfo = notification.userInfo else {return}
+		guard let keyboardSize = userInfo[RegistrationViewController.keyboardFrameEndUserInfoKey] as? NSValue else {return}
+		let keyboardFrame = keyboardSize.cgRectValue
+		if self.view.frame.origin.y == 0 {
+			self.view.frame.origin.y -= keyboardFrame.height
+		}
+	}
+	
+	@objc func keyboardWillHide(notification: Notification) {
+		if self.view.frame.origin.y != 0 {
+			self.view.frame.origin.y = 0
+		}
+	}
+	
+	deinit {
+		NotificationCenter.default.removeObserver(self)
+	}	
 }
