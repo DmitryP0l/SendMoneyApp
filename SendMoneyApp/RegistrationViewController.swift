@@ -68,7 +68,7 @@ final class RegistrationViewController: UIViewController {
 	// MARK: - Private methods
 	///  Метод настройки всего экрана регистрации
 	private func setupScreen() {
-		//navigationItem.hidesBackButton = true
+		navigationItem.hidesBackButton = false //  убирает кнопку "назад" из навбара. в релизе - true
 		view.backgroundColor = .darkGray
 		setupRegistrationViewContainer()
 		setupLogInLabel()
@@ -88,7 +88,7 @@ final class RegistrationViewController: UIViewController {
 			registrationViewContainer.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			registrationViewContainer.bottomAnchor.constraint(equalTo: view.bottomAnchor),
 			registrationViewContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
-			registrationViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3) //0.6
+			registrationViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
 		])
 		
 		registrationViewContainer.layer.cornerRadius = 60
@@ -149,5 +149,5 @@ final class RegistrationViewController: UIViewController {
 	
 	deinit {
 		NotificationCenter.default.removeObserver(self)
-	}	
+	}
 }
