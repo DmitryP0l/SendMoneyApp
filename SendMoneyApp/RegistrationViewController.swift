@@ -58,6 +58,17 @@ final class RegistrationViewController: UIViewController {
 		return textField
 	}()
 	
+	private var enterButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.backgroundColor = .white
+		button.setTitle("Enter", for: .normal)
+		button.setTitleColor(.darkGray, for: .normal)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+		button.layer.cornerRadius = 12
+		return button
+	}()
+	
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -74,6 +85,7 @@ final class RegistrationViewController: UIViewController {
 		setupLogInLabel()
 		setupLogInTextField()
 		setupPasswordTextField()
+		setupEnterButton()
 	}
 	///  Регистрация уведомлений на появление/скрытие клавиатуры
 	private func keyboardNotification() {
@@ -131,8 +143,24 @@ final class RegistrationViewController: UIViewController {
 		passwordTextField.layer.cornerRadius = 20
 		passwordTextField.clipsToBounds = true
 	}
+	
+	///Настройка ограничений (constrains) для enterButton
+	private func setupEnterButton() {
+		registrationViewContainer.addSubview(enterButton)
+		
+		NSLayoutConstraint.activate([
+			enterButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+			enterButton.bottomAnchor.constraint(equalTo: registrationViewContainer.bottomAnchor, constant: -40),
+			enterButton.widthAnchor.constraint(equalToConstant: 200),
+			enterButton.heightAnchor.constraint(equalToConstant: 50)
+		])
+		
+		enterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+	}
+	
+	// MARK: - Actions
 	///  методы, отрабатывающие по нотификации на появление и скрытие клавиатуры, и изменяющие размер self.view
-	@objc func keyboardWillShow(notification: Notification) {
+	@objc private func keyboardWillShow(notification: Notification) {
 		guard let userInfo = notification.userInfo else {return}
 		guard let keyboardSize = userInfo[RegistrationViewController.keyboardFrameEndUserInfoKey] as? NSValue else {return}
 		let keyboardFrame = keyboardSize.cgRectValue
@@ -141,10 +169,26 @@ final class RegistrationViewController: UIViewController {
 		}
 	}
 	
-	@objc func keyboardWillHide(notification: Notification) {
+	@objc private func keyboardWillHide(notification: Notification) {
 		if self.view.frame.origin.y != 0 {
 			self.view.frame.origin.y = 0
 		}
+	}
+	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход на HomePageViewController через NavigationController
+	@objc private func buttonTapped(sender: UIButton) {
+		UIView.animate(
+			withDuration: 0.1,
+			animations: {
+				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+			},
+			completion: { _ in
+				UIView.animate(withDuration: 0.1) {
+					sender.transform = CGAffineTransform.identity
+				}
+			})
+		
+		let homePageVC = HomePageViewController()
+		navigationController?.pushViewController(homePageVC, animated: true)
 	}
 	
 	deinit {

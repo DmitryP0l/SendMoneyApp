@@ -125,8 +125,8 @@ final class WelcomeViewController: UIViewController {
 	}
 	
 	// MARK: - Actions
-	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход между экранами через NavigationController
-	@objc func buttonTapped(sender: UIButton) {
+	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход на RegistrationViewController через NavigationController
+	@objc private func buttonTapped(sender: UIButton) {
 		UIView.animate(
 			withDuration: 0.1,
 			animations: {
