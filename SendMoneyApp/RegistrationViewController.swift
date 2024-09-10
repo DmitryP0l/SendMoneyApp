@@ -176,7 +176,7 @@ final class RegistrationViewController: UIViewController {
 			self.view.frame.origin.y = 0
 		}
 	}
-	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход на HomePageViewController через NavigationController
+	/// метод действия на тап по enterButton. содержит анимацию изменения размера кнопки при нажатии на нее. Переход на HomePageViewController через NavigationController
 	@objc private func buttonTapped(sender: UIButton) {
 		UIView.animate(
 			withDuration: 0.1,

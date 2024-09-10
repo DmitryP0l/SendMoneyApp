@@ -172,6 +172,7 @@ class HomePageViewController: UIViewController {
 			addMoneyButton.widthAnchor.constraint(equalTo: userInfoContainerView.widthAnchor, multiplier: 0.4),
 			addMoneyButton.heightAnchor.constraint(equalTo: userInfoContainerView.heightAnchor, multiplier: 0.2)
 		])
+		addMoneyButton.addTarget(self, action: #selector(addMoneyButtonTapped), for: .touchUpInside)
 	}
 	/// Настройка ограничений (constrains) для contactsButton с адаптивными размерами
 	private func setupContactsButton() {
@@ -184,7 +185,38 @@ class HomePageViewController: UIViewController {
 			contactsButton.widthAnchor.constraint(equalTo: userInfoContainerView.widthAnchor, multiplier: 0.4),
 			contactsButton.heightAnchor.constraint(equalTo: userInfoContainerView.heightAnchor, multiplier: 0.2)
 		])
+		contactsButton.addTarget(self, action: #selector(contactsButtonTapped), for: .touchUpInside)
 	}
 	
 	// MARK: - Actions
+	
+	/// метод действия на тап по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее.
+	@objc private func addMoneyButtonTapped(sender: UIButton) {
+		print("addMoneyButtonTapped")
+		UIView.animate(
+			withDuration: 0.1,
+			animations: {
+				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+			},
+			completion: { _ in
+				UIView.animate(withDuration: 0.1) {
+					sender.transform = CGAffineTransform.identity
+				}
+			})
+	}
+	/// метод действия на тап по contactsButton. содержит анимацию изменения размера кнопки при нажатии на нее.
+	@objc private func contactsButtonTapped(sender: UIButton) {
+		print("contactsButtonTapped")
+		UIView.animate(
+			withDuration: 0.1,
+			animations: {
+				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
+			},
+			completion: { _ in
+				UIView.animate(withDuration: 0.1) {
+					sender.transform = CGAffineTransform.identity
+				}
+			})
+	}
+	
 }
