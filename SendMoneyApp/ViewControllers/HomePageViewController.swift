@@ -5,6 +5,18 @@
 //  Created by Dmitry P on 8.09.24.
 //
 
+// перенести модель в отдельный файл
+// сделать комментарии в ячейке
+// сделать комментарии в  homePageVC
+// настроить таблицу (разделители, выделение, реакция на нажатие)
+
+
+struct Transaction {
+	let imageName: String
+	let name: String
+	let amount: String
+}
+	
 import UIKit
 
 class HomePageViewController: UIViewController {
@@ -20,11 +32,12 @@ class HomePageViewController: UIViewController {
 		return view
 	}()
 	
-	private var tableViewContainerView: UIView = {
-		let view = UIView()
-		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = .lightGray
-		return view
+	private var tableView: UITableView = {
+		let tableView = UITableView()
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.backgroundColor = .lightGray
+		tableView.rowHeight = 60
+		return tableView
 	}()
 	
 	/// Labels
@@ -86,9 +99,20 @@ class HomePageViewController: UIViewController {
 		return button
 	}()
 	
+	private let transactions = [
+	Transaction(imageName: "person.fill", name: "Ivan Ivanov", amount: "12345"),
+	Transaction(imageName: "person.fill", name: "Semen Semenov", amount: "21345"),
+	Transaction(imageName: "person.fill", name: "Fedor Fedorov", amount: "65432")
+	]
+	
 	// MARK: - Lifecycle
+		
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.register(HomePageViewCell.self, forCellReuseIdentifier: HomePageViewCell.identifier)
+		tableView.tableHeaderView = createTableHeaderView()
 		setupScreen()
 	}
 	
@@ -98,12 +122,26 @@ class HomePageViewController: UIViewController {
 		navigationItem.hidesBackButton = false //  убирает кнопку "назад" из навбара. в релизе - true
 		view.backgroundColor = .darkGray
 		setupUserInfoContainerView()
-		setupTableViewContainerView()
+		setupTableView()
 		setupUserNameLabel()
 		setupCurrentBalanceLabel()
 		setupTitleCurrentBalanceLabel()
 		setupAddMoneyButton()
 		setupContactsButton()
+	}
+	
+	private func createTableHeaderView() -> UIView {
+		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
+		let titleLabel = UILabel()
+		titleLabel.text = "last transactions"
+		titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
+		titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		headerView.addSubview(titleLabel)
+		NSLayoutConstraint.activate([
+			titleLabel.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+			titleLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor)
+		])
+		return headerView
 	}
 	
 	// MARK: - Setup constrains
@@ -120,17 +158,16 @@ class HomePageViewController: UIViewController {
 		userInfoContainerView.layer.cornerRadius = 12
 	}
 	/// Настройка ограничений (constrains) для tableViewContainerView
-	private func setupTableViewContainerView() {
-		view.addSubview(tableViewContainerView)
+	private func setupTableView() {
+		view.addSubview(tableView)
 		
 		NSLayoutConstraint.activate([
-			tableViewContainerView.topAnchor.constraint(equalTo: userInfoContainerView.bottomAnchor, constant: 8),
-			tableViewContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-			tableViewContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-			tableViewContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+			tableView.topAnchor.constraint(equalTo: userInfoContainerView.bottomAnchor, constant: 8),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+			tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
-		tableViewContainerView.layer.cornerRadius = 12
-		
+		tableView.layer.cornerRadius = 12
 	}
 	
 	/// Настройка ограничений (constrains) для userNameLabel
@@ -219,4 +256,22 @@ class HomePageViewController: UIViewController {
 			})
 	}
 	
+}
+
+// MARK: - extension UITableViewDelegate, UITableViewDataSource
+
+extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
+	
+	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return transactions.count
+	}
+	
+	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell = tableView.dequeueReusableCell(withIdentifier: HomePageViewCell.identifier, for: indexPath) as! HomePageViewCell
+		let transaction = transactions[indexPath.row]
+		cell.profileImageView.image = UIImage(systemName: transaction.imageName)
+		cell.nameLabel.text = transaction.name
+		cell.amountLabel.text = transaction.amount
+		return cell
+	}
 }
