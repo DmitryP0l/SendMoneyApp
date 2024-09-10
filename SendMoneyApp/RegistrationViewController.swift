@@ -87,11 +87,7 @@ final class RegistrationViewController: UIViewController {
 		setupPasswordTextField()
 		setupEnterButton()
 	}
-	///  Регистрация уведомлений на появление/скрытие клавиатуры
-	private func keyboardNotification() {
-		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-	}
+	
 	/// Настройка ограничений (constrains) для registrationViewContainer
 	private func setupRegistrationViewContainer() {
 		view.addSubview(registrationViewContainer)
@@ -156,6 +152,12 @@ final class RegistrationViewController: UIViewController {
 		])
 		
 		enterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+	}
+	
+	///  Регистрация уведомлений на появление/скрытие клавиатуры
+	private func keyboardNotification() {
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	// MARK: - Actions
