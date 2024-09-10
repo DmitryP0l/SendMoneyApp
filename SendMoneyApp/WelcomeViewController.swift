@@ -61,7 +61,6 @@ final class WelcomeViewController: UIViewController {
 	// MARK: - Private methods
 	///  Метод настройки всего экрана приветствия
 	private func setupScreen() {
-		
 		view.backgroundColor = .darkGray
 		setupWelcomeLabel()
 		setupStartingViewContainer()
@@ -69,6 +68,7 @@ final class WelcomeViewController: UIViewController {
 		setupStartButton()
 	}
 	
+	// MARK: - Setup constrains
 	/// Настройка ограничений (constrains) для welcomeLabel
 	private func setupWelcomeLabel() {
 		
@@ -83,7 +83,6 @@ final class WelcomeViewController: UIViewController {
 	
 	/// Настройка ограничений (constrains) для startingViewContainer
 	private func setupStartingViewContainer() {
-		
 		view.addSubview(startingViewContainer)
 		
 		NSLayoutConstraint.activate([
@@ -92,14 +91,12 @@ final class WelcomeViewController: UIViewController {
 			startingViewContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
 			startingViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
 		])
-		
 		startingViewContainer.layer.cornerRadius = 60
 		startingViewContainer.layer.maskedCorners = [.layerMaxXMinYCorner]
 	}
 	
 	/// Настройка ограницений (constrains) для informationLabel
 	private func setupInformationLabel() {
-		
 		startingViewContainer.addSubview(informationLabel)
 		
 		NSLayoutConstraint.activate([
@@ -111,7 +108,6 @@ final class WelcomeViewController: UIViewController {
 	
 	/// Настройка ограницений (constrains) для startButton
 	private func setupStartButton() {
-		
 		startingViewContainer.addSubview(startButton)
 		
 		NSLayoutConstraint.activate([
@@ -120,7 +116,6 @@ final class WelcomeViewController: UIViewController {
 			startButton.widthAnchor.constraint(equalToConstant: 200),
 			startButton.heightAnchor.constraint(equalToConstant: 50)
 		])
-		
 		startButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 	}
 	

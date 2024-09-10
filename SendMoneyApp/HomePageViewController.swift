@@ -12,6 +12,7 @@ class HomePageViewController: UIViewController {
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов
 	
+	/// Views
 	private var userInfoContainerView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
@@ -26,6 +27,7 @@ class HomePageViewController: UIViewController {
 		return view
 	}()
 	
+	/// Labels
 	private var userNameLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +61,31 @@ class HomePageViewController: UIViewController {
 		return label
 	}()
 	
+	/// Buttons
+	private var addMoneyButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.backgroundColor = .white
+		button.setTitle("Add money", for: .normal)
+		button.setTitleColor(.darkGray, for: .normal)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+		button.layer.cornerRadius = 12
+		return button
+	}()
+	
+	private var contactsButton: UIButton = {
+		let button = UIButton(type: .system)
+		button.translatesAutoresizingMaskIntoConstraints = false
+		button.backgroundColor = .white
+		button.setTitle("Contacts", for: .normal)
+		button.setTitleColor(.darkGray, for: .normal)
+		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+		button.titleLabel?.adjustsFontSizeToFitWidth = true
+		button.titleLabel?.minimumScaleFactor = 0.5
+		button.layer.cornerRadius = 12
+		return button
+	}()
+	
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -75,10 +102,12 @@ class HomePageViewController: UIViewController {
 		setupUserNameLabel()
 		setupCurrentBalanceLabel()
 		setupTitleCurrentBalanceLabel()
-		
-		
+		setupAddMoneyButton()
+		setupContactsButton()
 	}
-	/// Настройка ограничений (constrains) для setupUserInfoContainerView
+	
+	// MARK: - Setup constrains
+	/// Настройка ограничений (constrains) для userInfoContainerView
 	private func setupUserInfoContainerView() {
 		view.addSubview(userInfoContainerView)
 		
@@ -88,10 +117,9 @@ class HomePageViewController: UIViewController {
 			userInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
 			userInfoContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
 		])
-		
 		userInfoContainerView.layer.cornerRadius = 12
 	}
-	/// Настройка ограничений (constrains) для setupTableViewContainerView
+	/// Настройка ограничений (constrains) для tableViewContainerView
 	private func setupTableViewContainerView() {
 		view.addSubview(tableViewContainerView)
 		
@@ -101,11 +129,11 @@ class HomePageViewController: UIViewController {
 			tableViewContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
 			tableViewContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
-		
 		tableViewContainerView.layer.cornerRadius = 12
 		
 	}
 	
+	/// Настройка ограничений (constrains) для userNameLabel
 	private func setupUserNameLabel() {
 		userInfoContainerView.addSubview(userNameLabel)
 		
@@ -115,6 +143,7 @@ class HomePageViewController: UIViewController {
 		])
 	}
 	
+	/// Настройка ограничений (constrains) для titleCurrentBalanceLabel
 	private func setupTitleCurrentBalanceLabel() {
 		userInfoContainerView.addSubview(titleCurrentBalanceLabel)
 		
@@ -124,14 +153,38 @@ class HomePageViewController: UIViewController {
 		])
 	}
 	
+	/// Настройка ограничений (constrains) для currentBalanceLabel
 	private func setupCurrentBalanceLabel() {
 		userInfoContainerView.addSubview(currentBalanceLabel)
 		
 		NSLayoutConstraint.activate([
 			currentBalanceLabel.centerYAnchor.constraint(equalTo: userInfoContainerView.centerYAnchor),
 			currentBalanceLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
-			
 		])
 	}
+	/// Настройка ограничений (constrains) для addMoneyButton с адаптивными размерами
+	private func setupAddMoneyButton() {
+		userInfoContainerView.addSubview(addMoneyButton)
+		
+		NSLayoutConstraint.activate([
+			addMoneyButton.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: view.frame.width * 0.05),
+			addMoneyButton.bottomAnchor.constraint(equalTo: userInfoContainerView.bottomAnchor, constant: -24),
+			addMoneyButton.widthAnchor.constraint(equalTo: userInfoContainerView.widthAnchor, multiplier: 0.4),
+			addMoneyButton.heightAnchor.constraint(equalTo: userInfoContainerView.heightAnchor, multiplier: 0.2)
+		])
+	}
+	/// Настройка ограничений (constrains) для contactsButton с адаптивными размерами
+	private func setupContactsButton() {
+		userInfoContainerView.addSubview(contactsButton)
+		
+		NSLayoutConstraint.activate([
+			contactsButton.leadingAnchor.constraint(equalTo: addMoneyButton.trailingAnchor, constant: view.frame.width * 0.05),
+			contactsButton.trailingAnchor.constraint(equalTo: userInfoContainerView.trailingAnchor, constant: -view.frame.width * 0.05),
+			contactsButton.bottomAnchor.constraint(equalTo: userInfoContainerView.bottomAnchor, constant: -24),
+			contactsButton.widthAnchor.constraint(equalTo: userInfoContainerView.widthAnchor, multiplier: 0.4),
+			contactsButton.heightAnchor.constraint(equalTo: userInfoContainerView.heightAnchor, multiplier: 0.2)
+		])
+	}
+	
 	// MARK: - Actions
 }

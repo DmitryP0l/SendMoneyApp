@@ -88,6 +88,7 @@ final class RegistrationViewController: UIViewController {
 		setupEnterButton()
 	}
 	
+	// MARK: - Setup constrains
 	/// Настройка ограничений (constrains) для registrationViewContainer
 	private func setupRegistrationViewContainer() {
 		view.addSubview(registrationViewContainer)
@@ -150,7 +151,6 @@ final class RegistrationViewController: UIViewController {
 			enterButton.widthAnchor.constraint(equalToConstant: 200),
 			enterButton.heightAnchor.constraint(equalToConstant: 50)
 		])
-		
 		enterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 	}
 	
