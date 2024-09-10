@@ -32,7 +32,29 @@ class HomePageViewController: UIViewController {
 		label.text = "Hello User"
 		label.textAlignment = .left
 		label.textColor = .white
-		label.font = label.font.withSize(30)
+		label.font = label.font.withSize(24)
+		label.numberOfLines = 0
+		return label
+	}()
+	
+	private var titleCurrentBalanceLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "Your Current balance is"
+		label.textAlignment = .left
+		label.textColor = .white
+		label.font = label.font.withSize(14)
+		label.numberOfLines = 0
+		return label
+	}()
+	
+	private var currentBalanceLabel: UILabel = {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = "100.000"
+		label.textAlignment = .left
+		label.textColor = .white
+		label.font = label.font.withSize(36)
 		label.numberOfLines = 0
 		return label
 	}()
@@ -51,6 +73,8 @@ class HomePageViewController: UIViewController {
 		setupUserInfoContainerView()
 		setupTableViewContainerView()
 		setupUserNameLabel()
+		setupCurrentBalanceLabel()
+		setupTitleCurrentBalanceLabel()
 		
 		
 	}
@@ -87,9 +111,27 @@ class HomePageViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			userNameLabel.topAnchor.constraint(equalTo: userInfoContainerView.topAnchor, constant: 16),
-			userNameLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 16)
+			userNameLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
 		])
+	}
+	
+	private func setupTitleCurrentBalanceLabel() {
+		userInfoContainerView.addSubview(titleCurrentBalanceLabel)
 		
+		NSLayoutConstraint.activate([
+			titleCurrentBalanceLabel.bottomAnchor.constraint(equalTo: currentBalanceLabel.topAnchor, constant: -12),
+			titleCurrentBalanceLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
+		])
+	}
+	
+	private func setupCurrentBalanceLabel() {
+		userInfoContainerView.addSubview(currentBalanceLabel)
+		
+		NSLayoutConstraint.activate([
+			currentBalanceLabel.centerYAnchor.constraint(equalTo: userInfoContainerView.centerYAnchor),
+			currentBalanceLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
+			
+		])
 	}
 	// MARK: - Actions
 }
