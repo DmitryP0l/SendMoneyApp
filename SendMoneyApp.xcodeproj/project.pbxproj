@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */; };
 		0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */; };
+		0A0F82B72C934E7F00E518CA /* ModelHomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */; };
+		0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
 		0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeViewController.swift */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewCell.swift; sourceTree = "<group>"; };
+		0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHomePageVC.swift; sourceTree = "<group>"; };
+		0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				0AB607102C749BCE001916AE /* WelcomeViewController.swift */,
 				0AB6073C2C87554B001916AE /* RegistrationViewController.swift */,
 				0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */,
+				0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -96,6 +101,14 @@
 				0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		0A0F82B82C93797000E518CA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		0AB607002C749BCE001916AE = {
@@ -122,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				0A0F82AE2C9087CB00E518CA /* Cells */,
+				0A0F82B82C93797000E518CA /* Models */,
 				0A0F82AA2C90855E00E518CA /* ViewControllers */,
 				0AB6071A2C749BD2001916AE /* Info.plist */,
 				0AB6073E2C875597001916AE /* Support Files */,
@@ -288,10 +302,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */,
+				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
 				0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */,
+				0A0F82B72C934E7F00E518CA /* ModelHomePageVC.swift in Sources */,
 				0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

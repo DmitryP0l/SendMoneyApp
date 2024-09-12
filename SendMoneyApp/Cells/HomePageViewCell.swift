@@ -6,9 +6,12 @@
 //
 
 import UIKit
-
-class HomePageViewCell: UITableViewCell {
+/// Класс ячейки для табличного вида класса HomePageViewController.
+/// Содержит UIImageView для аватара, UILabel для информации о источнике изменения баланса, и UILabel для информации о сумме транзакции
+final class HomePageViewCell: UITableViewCell {
 	
+	// MARK: - Constants
+	/// инициализация и настройка UI элементов и констант
 	static let identifier = "HomePageViewCell"
 	
 	let profileImageView: UIImageView = {
@@ -27,6 +30,7 @@ class HomePageViewCell: UITableViewCell {
 		return label
 	}()
 	
+	// MARK: - Init
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		setupViews()
@@ -36,6 +40,8 @@ class HomePageViewCell: UITableViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Private methods
+	/// Настройка ограничений (constrains) для элементов ячейки.
 	private func setupViews() {
 		profileImageView.translatesAutoresizingMaskIntoConstraints = false
 		nameLabel.translatesAutoresizingMaskIntoConstraints = false

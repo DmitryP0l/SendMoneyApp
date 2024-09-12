@@ -5,21 +5,10 @@
 //  Created by Dmitry P on 8.09.24.
 //
 
-// перенести модель в отдельный файл
-// сделать комментарии в ячейке
-// сделать комментарии в  homePageVC
-// настроить таблицу (разделители, выделение, реакция на нажатие)
-
-
-struct Transaction {
-	let imageName: String
-	let name: String
-	let amount: String
-}
 	
 import UIKit
 
-class HomePageViewController: UIViewController {
+final class HomePageViewController: UIViewController {
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов
@@ -36,7 +25,8 @@ class HomePageViewController: UIViewController {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.backgroundColor = .lightGray
-		tableView.rowHeight = 60
+		tableView.rowHeight = 80
+		tableView.separatorStyle = .none
 		return tableView
 	}()
 	
@@ -129,7 +119,7 @@ class HomePageViewController: UIViewController {
 		setupAddMoneyButton()
 		setupContactsButton()
 	}
-	
+	/// Метод настройки хедера для таблицы с текстовым полем
 	private func createTableHeaderView() -> UIView {
 		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
 		let titleLabel = UILabel()
@@ -273,5 +263,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 		cell.nameLabel.text = transaction.name
 		cell.amountLabel.text = transaction.amount
 		return cell
+	}
+	
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
