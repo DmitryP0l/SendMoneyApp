@@ -1,18 +1,20 @@
 //
-//  HomePageViewCell.swift
+//  ContactListViewCell.swift
 //  SendMoneyApp
 //
-//  Created by Dmitry P on 10.09.24.
+//  Created by Dmitry P on 18.09.24.
 //
 
 import UIKit
-/// Класс ячейки для табличного вида класса HomePageViewController.
-/// Содержит UIImageView для аватара, UILabel для информации о источнике изменения баланса, и UILabel для информации о сумме транзакции
-final class HomePageViewCell: UITableViewCell {
+
+/// Класс ячейки для табличного вида класса ContactListViewController.
+/// Содержит UIImageView для аватара, UILabel для информации о контакте в записной книге
+
+final class ContactListViewCell: UITableViewCell {
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов и констант
-	static let identifier = "HomePageViewCell"
+	static let identifier = "ContactListViewCell"
 	
 	let profileImageView: UIImageView = {
 		let imageView = UIImageView()
@@ -21,11 +23,6 @@ final class HomePageViewCell: UITableViewCell {
 	}()
 	
 	let nameLabel: UILabel = {
-		let label = UILabel()
-		return label
-	}()
-	
-	let amountLabel: UILabel = {
 		let label = UILabel()
 		return label
 	}()
@@ -42,14 +39,13 @@ final class HomePageViewCell: UITableViewCell {
 	
 	// MARK: - Private methods
 	/// Настройка ограничений (constrains) для элементов ячейки.
+	
 	private func setupViews() {
 		profileImageView.translatesAutoresizingMaskIntoConstraints = false
 		nameLabel.translatesAutoresizingMaskIntoConstraints = false
-		amountLabel.translatesAutoresizingMaskIntoConstraints = false
 		
 		contentView.addSubview(profileImageView)
 		contentView.addSubview(nameLabel)
-		contentView.addSubview(amountLabel)
 		
 		NSLayoutConstraint.activate([
 			profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
@@ -58,15 +54,10 @@ final class HomePageViewCell: UITableViewCell {
 			profileImageView.heightAnchor.constraint(equalToConstant: 40),
 			
 			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-			nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			
-			amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-			amountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
-		]
+			nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			]
 		)
-		
 		profileImageView.layer.cornerRadius = 20
 		profileImageView.clipsToBounds = true
 	}
 }
-

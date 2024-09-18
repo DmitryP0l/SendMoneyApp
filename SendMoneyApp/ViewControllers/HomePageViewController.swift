@@ -244,6 +244,8 @@ final class HomePageViewController: UIViewController {
 					sender.transform = CGAffineTransform.identity
 				}
 			})
+		let contactListVC = ContactListViewController()
+		navigationController?.pushViewController(contactListVC, animated: true)
 	}
 	
 }
