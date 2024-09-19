@@ -8,7 +8,7 @@
 /// Структура модели, описывающая данные, необходимые для заполнения полей в ячейке таблицы HomePageViewController
 ///imageName - имя системного изображения, name - именная идентификация участника транзакции, amount - сумма транзакции
 
-struct Transaction {
+struct TransactionInfo {
 	let imageName: String
 	let name: String
 	let amount: String

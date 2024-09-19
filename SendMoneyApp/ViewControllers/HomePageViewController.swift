@@ -89,10 +89,10 @@ final class HomePageViewController: UIViewController {
 		return button
 	}()
 	
-	private let transactions = [
-	Transaction(imageName: "person.fill", name: "Ivan Ivanov", amount: "12345"),
-	Transaction(imageName: "person.fill", name: "Semen Semenov", amount: "21345"),
-	Transaction(imageName: "person.fill", name: "Fedor Fedorov", amount: "65432")
+	private let transactionsDataSource = [
+	TransactionInfo(imageName: "person.fill", name: "Ivan Ivanov", amount: "12345"),
+	TransactionInfo(imageName: "person.fill", name: "Semen Semenov", amount: "21345"),
+	TransactionInfo(imageName: "person.fill", name: "Fedor Fedorov", amount: "65432")
 	]
 	
 	// MARK: - Lifecycle
@@ -255,12 +255,12 @@ final class HomePageViewController: UIViewController {
 extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return transactions.count
+		return transactionsDataSource.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: HomePageViewCell.identifier, for: indexPath) as! HomePageViewCell
-		let transaction = transactions[indexPath.row]
+		let transaction = transactionsDataSource[indexPath.row]
 		cell.profileImageView.image = UIImage(systemName: transaction.imageName)
 		cell.nameLabel.text = transaction.name
 		cell.amountLabel.text = transaction.amount
