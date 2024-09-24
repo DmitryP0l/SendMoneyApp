@@ -24,7 +24,7 @@ final class HomePageViewController: UIViewController {
 	private var tableView: UITableView = {
 		let tableView = UITableView()
 		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.backgroundColor = .lightGray
+		tableView.backgroundColor = .white
 		tableView.rowHeight = 80
 		tableView.separatorStyle = .none
 		return tableView
@@ -72,6 +72,8 @@ final class HomePageViewController: UIViewController {
 		button.setTitle("Add money", for: .normal)
 		button.setTitleColor(.darkGray, for: .normal)
 		button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+		button.titleLabel?.adjustsFontSizeToFitWidth = true
+		button.titleLabel?.minimumScaleFactor = 0.5
 		button.layer.cornerRadius = 12
 		return button
 	}()
@@ -90,9 +92,9 @@ final class HomePageViewController: UIViewController {
 	}()
 	
 	private let transactionsDataSource = [
-	TransactionInfo(imageName: "person.fill", name: "Ivan Ivanov", amount: "12345"),
-	TransactionInfo(imageName: "person.fill", name: "Semen Semenov", amount: "21345"),
-	TransactionInfo(imageName: "person.fill", name: "Fedor Fedorov", amount: "65432")
+	TransactionInfo(imageName: "person.circle", name: "Ivan Ivanov", amount: 12345),
+	TransactionInfo(imageName: "person.circle", name: "Semen Semenov", amount: 21345),
+	TransactionInfo(imageName: "person.circle", name: "Fedor Fedorov", amount: 65432)
 	]
 	
 	// MARK: - Lifecycle
@@ -141,11 +143,11 @@ final class HomePageViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			userInfoContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-			userInfoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-			userInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+			userInfoContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			userInfoContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			userInfoContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
 		])
-		userInfoContainerView.layer.cornerRadius = 12
+		userInfoContainerView.layer.cornerRadius = 40
 	}
 	/// Настройка ограничений (constrains) для tableViewContainerView
 	private func setupTableView() {
@@ -153,11 +155,11 @@ final class HomePageViewController: UIViewController {
 		
 		NSLayoutConstraint.activate([
 			tableView.topAnchor.constraint(equalTo: userInfoContainerView.bottomAnchor, constant: 8),
-			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
-			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
-		tableView.layer.cornerRadius = 12
+		tableView.layer.cornerRadius = 40
 	}
 	
 	/// Настройка ограничений (constrains) для userNameLabel
@@ -215,7 +217,7 @@ final class HomePageViewController: UIViewController {
 		contactsButton.addTarget(self, action: #selector(contactsButtonTapped), for: .touchUpInside)
 	}
 	
-	// MARK: - Actions
+	// MARK: - objc Actions
 	
 	/// метод действия на тап по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее.
 	@objc private func addMoneyButtonTapped(sender: UIButton) {
@@ -263,7 +265,7 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 		let transaction = transactionsDataSource[indexPath.row]
 		cell.profileImageView.image = UIImage(systemName: transaction.imageName)
 		cell.nameLabel.text = transaction.name
-		cell.amountLabel.text = transaction.amount
+		cell.amountLabel.text = String(transaction.amount)
 		return cell
 	}
 	

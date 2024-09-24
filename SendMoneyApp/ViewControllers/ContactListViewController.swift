@@ -41,12 +41,12 @@ final class ContactListViewController: UIViewController {
 		   }()
 
 	private var contactsDataSource = [
-		Contact(imageName: "person.fill", name: "Ivan Ivanov"),
-		Contact(imageName: "person.fill", name: "Semen Semenov"),
-		Contact(imageName: "person.fill", name: "Fedor Fedorov")
+		Person(imageName: "person.circle", name: "Ivan Ivanov", currentBalanse: 100),
+		Person(imageName: "person.circle", name: "Semen Semenov", currentBalanse: 100),
+		Person(imageName: "person.circle", name: "Fedor Fedorov", currentBalanse: 100)
 	]
 	
-	private var filteredContactsDataSource = [Contact]()
+	private var filteredContactsDataSource = [Person]()
 	
 	// MARK: - Lifecycle
 	
@@ -83,7 +83,7 @@ final class ContactListViewController: UIViewController {
 			contactListTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
 			contactListTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
 		])
-		contactListTableView.layer.cornerRadius = 12
+		contactListTableView.layer.cornerRadius = 40
 	}
 	/// Инициализация строки поиска
 //	private func setupSearchController() {
@@ -124,8 +124,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		
-		let detailContactVC = DetailContactViewController()
-		detailContactVC.contact = contactsDataSource[indexPath.row]
+		let detailContactVC = DetailPersonViewController()
+		detailContactVC.person = contactsDataSource[indexPath.row]
 		navigationController?.pushViewController(detailContactVC, animated: true)
 	}
 }

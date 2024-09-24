@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */; };
 		0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */; };
-		0A0F82B72C934E7F00E518CA /* ModelHomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */; };
+		0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */; };
 		0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */; };
 		0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */; };
-		0A0F82BE2C9B46CB00E518CA /* ModelContactListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* ModelContactListVC.swift */; };
+		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
 		0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeViewController.swift */; };
@@ -22,7 +22,7 @@
 		0AB6072E2C749BD3001916AE /* SendMoneyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */; };
 		0AB607302C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */; };
 		0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6073C2C87554B001916AE /* RegistrationViewController.swift */; };
-		0AE9E5742CA2C6190083B615 /* DetailContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E5732CA2C6190083B615 /* DetailContactViewController.swift */; };
+		0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,10 +45,10 @@
 /* Begin PBXFileReference section */
 		0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewCell.swift; sourceTree = "<group>"; };
-		0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelHomePageVC.swift; sourceTree = "<group>"; };
+		0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoModel.swift; sourceTree = "<group>"; };
 		0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewCell.swift; sourceTree = "<group>"; };
-		0A0F82BD2C9B46CB00E518CA /* ModelContactListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelContactListVC.swift; sourceTree = "<group>"; };
+		0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITests.swift; sourceTree = "<group>"; };
 		0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0AB6073C2C87554B001916AE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		0AE9E5732CA2C6190083B615 /* DetailContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContactViewController.swift; sourceTree = "<group>"; };
+		0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +97,7 @@
 				0AB6073C2C87554B001916AE /* RegistrationViewController.swift */,
 				0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */,
 				0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */,
-				0AE9E5732CA2C6190083B615 /* DetailContactViewController.swift */,
+				0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -114,8 +114,8 @@
 		0A0F82B82C93797000E518CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0A0F82B62C934E7F00E518CA /* ModelHomePageVC.swift */,
-				0A0F82BD2C9B46CB00E518CA /* ModelContactListVC.swift */,
+				0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */,
+				0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -313,13 +313,13 @@
 				0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */,
 				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
-				0A0F82BE2C9B46CB00E518CA /* ModelContactListVC.swift in Sources */,
+				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
 				0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */,
-				0AE9E5742CA2C6190083B615 /* DetailContactViewController.swift in Sources */,
+				0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
 				0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */,
-				0A0F82B72C934E7F00E518CA /* ModelHomePageVC.swift in Sources */,
+				0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */,
 				0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

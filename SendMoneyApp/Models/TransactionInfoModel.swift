@@ -1,5 +1,5 @@
 //
-//  ModelHomePageVC.swift
+//  TransactionInfoModel.swift.swift
 //  SendMoneyApp
 //
 //  Created by Dmitry P on 12.09.24.
@@ -11,5 +11,5 @@
 struct TransactionInfo {
 	let imageName: String
 	let name: String
-	let amount: String
+	let amount: Int
 }

@@ -91,7 +91,7 @@ final class WelcomeViewController: UIViewController {
 			startingViewContainer.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9),
 			startingViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4)
 		])
-		startingViewContainer.layer.cornerRadius = 60
+		startingViewContainer.layer.cornerRadius = 40
 		startingViewContainer.layer.maskedCorners = [.layerMaxXMinYCorner]
 	}
 	
@@ -119,7 +119,7 @@ final class WelcomeViewController: UIViewController {
 		startButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 	}
 	
-	// MARK: - Actions
+	// MARK: - objc Actions
 	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход на RegistrationViewController через NavigationController
 	@objc private func buttonTapped(sender: UIButton) {
 		UIView.animate(

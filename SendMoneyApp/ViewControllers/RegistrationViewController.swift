@@ -100,7 +100,7 @@ final class RegistrationViewController: UIViewController {
 			registrationViewContainer.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3)
 		])
 		
-		registrationViewContainer.layer.cornerRadius = 60
+		registrationViewContainer.layer.cornerRadius = 40
 		registrationViewContainer.layer.maskedCorners = [.layerMinXMinYCorner]
 	}
 	/// Настройка ограничений (constrains) для logInLabel
@@ -160,7 +160,7 @@ final class RegistrationViewController: UIViewController {
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
-	// MARK: - Actions
+	// MARK: - objc Actions
 	///  методы, отрабатывающие по нотификации на появление и скрытие клавиатуры, и изменяющие размер self.view
 	@objc private func keyboardWillShow(notification: Notification) {
 		guard let userInfo = notification.userInfo else {return}
