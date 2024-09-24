@@ -22,6 +22,7 @@
 		0AB6072E2C749BD3001916AE /* SendMoneyAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */; };
 		0AB607302C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */; };
 		0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6073C2C87554B001916AE /* RegistrationViewController.swift */; };
+		0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */; };
 		0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		0AB6072D2C749BD3001916AE /* SendMoneyAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITests.swift; sourceTree = "<group>"; };
 		0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0AB6073C2C87554B001916AE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePerson.swift; sourceTree = "<group>"; };
 		0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 		0A0F82B82C93797000E518CA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */,
 				0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */,
 				0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */,
 			);
@@ -315,6 +318,7 @@
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
 				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
 				0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */,
+				0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */,
 				0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,

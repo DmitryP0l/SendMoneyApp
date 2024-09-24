@@ -161,7 +161,7 @@ final class DetailPersonViewController: UIViewController {
 		personInfoContainerView.addSubview(currentBalanceLabel)
 		
 		if let person = person {
-			currentBalanceLabel.text = String(person.currentBalanse)
+			currentBalanceLabel.text = String(person.currentBalance)
 		}
 		
 		NSLayoutConstraint.activate([

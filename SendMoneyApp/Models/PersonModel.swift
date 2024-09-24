@@ -13,5 +13,5 @@ import Foundation
 struct Person {
 	let imageName: String
 	let name: String
-	let currentBalanse: Int
+	let currentBalance: Int
 }

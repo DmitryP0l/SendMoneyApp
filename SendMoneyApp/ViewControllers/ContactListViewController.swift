@@ -6,9 +6,6 @@
 //
 
 
-// добавить хэдер
-// разобраться с поиском
-
 import UIKit
 
 final class ContactListViewController: UIViewController {
@@ -45,12 +42,7 @@ final class ContactListViewController: UIViewController {
 		return tableView
 	}()
 	
-	private var contactsDataSource = [
-		Person(imageName: "person.circle", name: "Ivan Ivanov", currentBalanse: 100),
-		Person(imageName: "person.circle", name: "Semen Semenov", currentBalanse: 100),
-		Person(imageName: "person.circle", name: "Fedor Fedorov", currentBalanse: 100)
-	]
-	
+	private var contactsDataSource = [Person]()
 	private var filteredContactsDataSource = [Person]()
 	
 	// MARK: - Lifecycle
@@ -58,7 +50,6 @@ final class ContactListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScreen()
-		setupHeaderLabel()
 	}
 	
 	// MARK: - Private methods
@@ -66,9 +57,10 @@ final class ContactListViewController: UIViewController {
 	///  Метод настройки всего экрана ContactListViewController. Назначение пустому массиву filteredContactsDataSource значений основного массива. Необходимо потому, что в начале, пока поле поиска пустое, эти массивы идентичны. в дальнейшем массив filteredContactsDataSource будет менять количество значений в зависимости от желаемого поиска и вводимых символов в поисковую строку
 	private func setupScreen() {
 		view.backgroundColor = .gray
-		filteredContactsDataSource = contactsDataSource
 		
+		generateContactsDataSorce(countPerson: 10)
 		setupContactListTableView()
+		setupHeaderLabel()
 	}
 	
 	/// Настройка ограничений (constrains). Инициализация делегата, источника данных и регистрация ячейки для contactListTableView
@@ -101,10 +93,16 @@ final class ContactListViewController: UIViewController {
 		
 		contactListTableView.tableHeaderView = headerView
 	}
+	
+	/// Метод, вызывает класс, который генерирует массив контактов. В теле метода происходит заполнение массива contactsDataSource
+	private func generateContactsDataSorce(countPerson: Int) {
+		contactsDataSource = GeneratePerson().generateRandomPerson(count: countPerson)
+		filteredContactsDataSource = contactsDataSource
+	}
 }
 
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
-	/// Метод определяющий количество ячеек.
+/// Метод определяющий количество ячеек.
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return filteredContactsDataSource.count
