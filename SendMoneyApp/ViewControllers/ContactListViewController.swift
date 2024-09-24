@@ -36,7 +36,7 @@ final class ContactListViewController: UIViewController {
 	private lazy var searchController: UISearchController = {
 			   let controller = UISearchController(searchResultsController: nil)
 			   controller.searchResultsUpdater = self
-			   controller.hidesNavigationBarDuringPresentation = true
+			   controller.hidesNavigationBarDuringPresentation = false
 			   return controller
 		   }()
 
@@ -53,7 +53,7 @@ final class ContactListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScreen()
-		setupSearchController()
+		setupHeaderLabel()
 	}
 	
 	
@@ -65,7 +65,7 @@ final class ContactListViewController: UIViewController {
 		filteredContactsDataSource = contactsDataSource
 		
 		setupContactListTableView()
-		setupHeaderLabel()
+		
 	}
 	
 	/// Настройка ограничений (constrains). Инициализация делегата, источника данных и регистрация ячейки для contactListTableView
@@ -86,14 +86,23 @@ final class ContactListViewController: UIViewController {
 		contactListTableView.layer.cornerRadius = 12
 	}
 	/// Инициализация строки поиска
-	private func setupSearchController() {
-		contactListTableView.tableHeaderView = searchController.searchBar
-	}
+//	private func setupSearchController() {
+//		contactListTableView.tableHeaderView = searchController.searchBar
+//	}
 	
 	///Инициализация и добавление хэдера
 	private func setupHeaderLabel() {
+		let headerView = UIView()
+		headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 100)
+		
 		headerLabel.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 50)
-		contactListTableView.tableHeaderView = headerLabel
+		headerView.addSubview(headerLabel)
+		
+		searchController.searchBar.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: 50)
+		headerView.addSubview(searchController.searchBar)
+		
+		contactListTableView.tableHeaderView = headerView
+		//contactListTableView.tableHeaderView = headerLabel
 	}
 }
 
@@ -112,7 +121,12 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 	}
 	
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
 		tableView.deselectRow(at: indexPath, animated: true)
+		
+		let detailContactVC = DetailContactViewController()
+		detailContactVC.contact = contactsDataSource[indexPath.row]
+		navigationController?.pushViewController(detailContactVC, animated: true)
 	}
 }
 
