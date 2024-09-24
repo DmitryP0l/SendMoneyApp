@@ -15,13 +15,25 @@ final class ContactListViewController: UIViewController {
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов
+	///
+	private let headerView: UIView = {
+		let view = UIView()
+		return view
+	}()
 	
-	private let headerLabel: UILabel = {
+	private var headerLabel: UILabel = {
 		let label = UILabel()
 		label.text = "Contacts"
 		label.textAlignment = .center
 		label.font = UIFont.boldSystemFont(ofSize: 24)
 		return label
+	}()
+	
+	private var searchBar: UISearchBar = {
+		let searchBar = UISearchBar()
+		searchBar.placeholder = "Search contacts"
+		searchBar.sizeToFit()
+		return searchBar
 	}()
 	
 	private var contactListTableView: UITableView = {
@@ -33,13 +45,6 @@ final class ContactListViewController: UIViewController {
 		return tableView
 	}()
 	
-	private lazy var searchController: UISearchController = {
-			   let controller = UISearchController(searchResultsController: nil)
-			   controller.searchResultsUpdater = self
-			   controller.hidesNavigationBarDuringPresentation = false
-			   return controller
-		   }()
-
 	private var contactsDataSource = [
 		Person(imageName: "person.circle", name: "Ivan Ivanov", currentBalanse: 100),
 		Person(imageName: "person.circle", name: "Semen Semenov", currentBalanse: 100),
@@ -56,7 +61,6 @@ final class ContactListViewController: UIViewController {
 		setupHeaderLabel()
 	}
 	
-	
 	// MARK: - Private methods
 	
 	///  Метод настройки всего экрана ContactListViewController. Назначение пустому массиву filteredContactsDataSource значений основного массива. Необходимо потому, что в начале, пока поле поиска пустое, эти массивы идентичны. в дальнейшем массив filteredContactsDataSource будет менять количество значений в зависимости от желаемого поиска и вводимых символов в поисковую строку
@@ -65,7 +69,6 @@ final class ContactListViewController: UIViewController {
 		filteredContactsDataSource = contactsDataSource
 		
 		setupContactListTableView()
-		
 	}
 	
 	/// Настройка ограничений (constrains). Инициализация делегата, источника данных и регистрация ячейки для contactListTableView
@@ -85,57 +88,57 @@ final class ContactListViewController: UIViewController {
 		])
 		contactListTableView.layer.cornerRadius = 40
 	}
-	/// Инициализация строки поиска
-//	private func setupSearchController() {
-//		contactListTableView.tableHeaderView = searchController.searchBar
-//	}
 	
 	///Инициализация и добавление хэдера
 	private func setupHeaderLabel() {
-		let headerView = UIView()
 		headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 100)
-		
 		headerLabel.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 50)
 		headerView.addSubview(headerLabel)
 		
-		searchController.searchBar.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: 50)
-		headerView.addSubview(searchController.searchBar)
+		searchBar.frame = CGRect(x: 0, y: 50, width: view.bounds.width, height: 50)
+		searchBar.delegate = self
+		headerView.addSubview(searchBar)
 		
 		contactListTableView.tableHeaderView = headerView
-		//contactListTableView.tableHeaderView = headerLabel
 	}
 }
 
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
+	/// Метод определяющий количество ячеек.
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return filteredContactsDataSource.count
 	}
-	
+	/// Метод создания и настройки ячейки. Передача информации в поля ячейки из массива filteredContactsDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: ContactListViewCell.identifier, for: indexPath) as! ContactListViewCell
-		let contacts = contactsDataSource[indexPath.row]
+		let contacts = filteredContactsDataSource[indexPath.row]
 		cell.profileImageView.image = UIImage(systemName: contacts.imageName)
 		cell.nameLabel.text = contacts.name
 		return cell
 	}
-	
+	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на DetailPersonViewController
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		
 		let detailContactVC = DetailPersonViewController()
-		detailContactVC.person = contactsDataSource[indexPath.row]
+		detailContactVC.person = filteredContactsDataSource[indexPath.row]
 		navigationController?.pushViewController(detailContactVC, animated: true)
 	}
 }
 
 //MARK: - extension UISearchResultsUpdating
-extension ContactListViewController: UISearchResultsUpdating {
+extension ContactListViewController: UISearchBarDelegate {
 	
-	func updateSearchResults(for searchController: UISearchController) {
-		let searchText = searchController.searchBar.text ?? ""
-		filteredContactsDataSource = searchText.isEmpty ? contactsDataSource : contactsDataSource.filter { $0.name.lowercased().contains(searchText.lowercased())}
+	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+		filteredContactsDataSource = []
+		if searchText.isEmpty {
+			filteredContactsDataSource = contactsDataSource
+		} else {
+			filteredContactsDataSource = contactsDataSource.filter {
+				$0.name.lowercased().contains(searchText.lowercased())}
+		}
 		contactListTableView.reloadData()
 	}
 }
