@@ -128,7 +128,7 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 
 //MARK: - extension UISearchResultsUpdating
 extension ContactListViewController: UISearchBarDelegate {
-	
+	/// метод, отрабатывающий поиск по основному массиву контактов и наполняющий массив отфильтрованных контактов
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 		filteredContactsDataSource = []
 		if searchText.isEmpty {

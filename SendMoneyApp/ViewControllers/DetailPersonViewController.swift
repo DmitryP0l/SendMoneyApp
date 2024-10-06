@@ -195,12 +195,44 @@ final class DetailPersonViewController: UIViewController {
 	}
 	
 	// MARK: - objc Actions
-	
+	/// Метод отрабатывающий нажатие на sendMoneyButton. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры
 	@objc private func sendMoneyButtonTapped() {
-		print("send money")
+		let alertController = UIAlertController(title: "enter the amount to transfer", message: nil, preferredStyle: .alert)
+		
+		alertController.addTextField { textField in
+			textField.placeholder = "enter"
+			textField.keyboardType = .numberPad
+		}
+		
+		let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
+		let okAction = UIAlertAction(title: "ok", style: .default) { _ in
+			if let textField = alertController.textFields?.first, let text = textField.text {
+				print(text)
+			}
+		}
+		alertController.addAction(cancelAction)
+		alertController.addAction(okAction)
+		
+		present(alertController, animated: true)
 	}
-	
+	/// Метод отрабатывающий нажатие на requestMoneyButton. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры
 	@objc private func requestMoneyButtonTapped() {
-		print("requestMoney")
+		let alertController = UIAlertController(title: "enter the amount to request", message: nil, preferredStyle: .alert)
+		
+		alertController.addTextField { textField in
+			textField.placeholder = "enter"
+			textField.keyboardType = .numberPad
+		}
+		
+		let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
+		let okAction = UIAlertAction(title: "ok", style: .default) { _ in
+			if let textField = alertController.textFields?.first, let text = textField.text {
+				print(text)
+			}
+		}
+		alertController.addAction(cancelAction)
+		alertController.addAction(okAction)
+		
+		present(alertController, animated: true)
 	}
 }

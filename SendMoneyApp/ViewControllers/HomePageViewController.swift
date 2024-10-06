@@ -219,7 +219,7 @@ final class HomePageViewController: UIViewController {
 	
 	// MARK: - objc Actions
 	
-	/// метод действия на тап по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее.
+	/// метод отрабатывающий нажатие по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры
 	@objc private func addMoneyButtonTapped(sender: UIButton) {
 		print("addMoneyButtonTapped")
 		UIView.animate(
@@ -232,6 +232,24 @@ final class HomePageViewController: UIViewController {
 					sender.transform = CGAffineTransform.identity
 				}
 			})
+		
+		let alertController = UIAlertController(title: "enter the amount to increase the balance", message: nil, preferredStyle: .alert)
+		
+		alertController.addTextField { textField in
+			textField.placeholder = "enter"
+			textField.keyboardType = .numberPad
+		}
+		
+		let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
+		let okAction = UIAlertAction(title: "ok", style: .default) { _ in
+			if let textField = alertController.textFields?.first, let text = textField.text {
+				print(text)
+			}
+		}
+		alertController.addAction(cancelAction)
+		alertController.addAction(okAction)
+		
+		present(alertController, animated: true)
 	}
 	/// метод действия на тап по contactsButton. содержит анимацию изменения размера кнопки при нажатии на нее.
 	@objc private func contactsButtonTapped(sender: UIButton) {

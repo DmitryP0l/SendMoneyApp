@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+	///  класс, генерирующий массив с устанавливаемым количеством контактов, с помощью метода generateRandomPerson(count: Int)
 class GeneratePerson {
 	/// массивы с рандомными именами
 	let firstNames = ["John", "Mary", "David", "Jane"]
