@@ -1,24 +1,30 @@
 //
-//  WelcomeViewController.swift
+//  WelcomeScreenViewController.swift
 //  SendMoneyApp
 //
 //  Created by Dmitry P on 20.08.24.
 //
+// отвечает за отображение данных и обработку пользовательских действий
 
 import UIKit
 
-final class WelcomeViewController: UIViewController {
+final class WelcomeScreenViewController: UIViewController {
+
+	// MARK: - Internal properties
 	
-	// MARK: - Constants
-	/// инициализация и настройка UI элементов
+	var interactor: WelcomeScreenBusinessLogic?
+	
+	// MARK: - Private properties
+	
+	/// вью контейнер для UILabel и UIButton,и для визуального выделения
 	private var startingViewContainer: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .lightGray
 		return view
 	}()
-	
-	private var welcomeLabel: UILabel = {
+	/// текст приветствия
+	private let welcomeLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Welcome to Send Money App"
@@ -28,8 +34,8 @@ final class WelcomeViewController: UIViewController {
 		label.numberOfLines = 0
 		return label
 	}()
-	
-	private var informationLabel: UILabel = {
+	/// информационный текст
+	private let informationLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.text = "Transfer money that is easier."
@@ -39,8 +45,8 @@ final class WelcomeViewController: UIViewController {
 		label.numberOfLines = 0
 		return label
 	}()
-	
-	private var startButton: UIButton = {
+	/// кнопка перехода на следующую страницу
+	private let startButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .white
@@ -55,12 +61,14 @@ final class WelcomeViewController: UIViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		setupScreen()
+		setupViews()
+		setupScene()
 	}
 	
 	// MARK: - Private methods
+	
 	///  Метод настройки всего экрана приветствия
-	private func setupScreen() {
+	private func setupViews() {
 		view.backgroundColor = .darkGray
 		setupWelcomeLabel()
 		setupStartingViewContainer()
@@ -68,10 +76,22 @@ final class WelcomeViewController: UIViewController {
 		setupStartButton()
 	}
 	
+	private func setupScene() {
+		let viewController = self
+		let interactor = WelcomeScreenInteractor()
+		let presenter = WelcomeScreenPresenter()
+		let router = WelcomeScreenRouter()
+		
+		viewController.interactor = interactor
+		interactor.presenter = presenter
+		presenter.viewController = viewController
+		router.viewController = viewController
+	}
+	
 	// MARK: - Setup constrains
+	
 	/// Настройка ограничений (constrains) для welcomeLabel
 	private func setupWelcomeLabel() {
-		
 		view.addSubview(welcomeLabel)
 		
 		NSLayoutConstraint.activate([
@@ -120,21 +140,27 @@ final class WelcomeViewController: UIViewController {
 	}
 	
 	// MARK: - objc Actions
-	/// метод содержит анимацию изменения размера кнопки при нажатии на нее. Переход на RegistrationViewController через NavigationController
-	@objc private func buttonTapped(sender: UIButton) {
-		UIView.animate(
-			withDuration: 0.1,
-			animations: {
-				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-			},
-			completion: { _ in
-				UIView.animate(withDuration: 0.1) {
-					sender.transform = CGAffineTransform.identity
-				}
-			})
-		
-		let registrationVC = RegistrationViewController()
-		navigationController?.pushViewController(registrationVC, animated: true)
+	
+	/// 1. Пользователь нажимает на startButton.
+	/// 2. WelcomeScreenViewController вызывает interactor?.startButtonTapped().
+	/// 3. WelcomeScreenInteractor вызывает presenter?.presentRegistrationScreen().
+	/// 4. WelcomeScreenPresenter вызывает viewController?.displayRegistrationScreen().
+	/// 5. WelcomeScreenViewController вызывает router.routeToRegistrationScreen().
+	/// 6. WelcomeScreenRouter выполняет переход на RegistrationViewController.
+	
+	@objc private func buttonTapped() {
+		interactor?.startButtonTapped()
 	}
 }
 
+// MARK: - extension WelcomeDisplayLogic
+
+extension WelcomeScreenViewController: WelcomeDisplayLogic {
+	
+	/// метод вызывается презентером для отображения следующего экрана
+	func displayRegistrationScreen() {
+		let router = WelcomeScreenRouter()
+		router.viewController = self
+		router.routeToRegistrationScreen()
+	}
+}

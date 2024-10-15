@@ -115,12 +115,12 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 		cell.nameLabel.text = contacts.name
 		return cell
 	}
-	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на DetailPersonViewController
+	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на PersonalPageViewController
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		tableView.deselectRow(at: indexPath, animated: true)
 		
-		let detailContactVC = DetailPersonViewController()
+		let detailContactVC = PersonalPageViewController()
 		detailContactVC.person = filteredContactsDataSource[indexPath.row]
 		navigationController?.pushViewController(detailContactVC, animated: true)
 	}

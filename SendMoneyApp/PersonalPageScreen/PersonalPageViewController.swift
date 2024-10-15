@@ -1,5 +1,5 @@
 //
-//  DetailPersonViewController.swift
+//  PersonalPageViewController.swift
 //  SendMoneyApp
 //
 //  Created by Dmitry P on 24.09.24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailPersonViewController: UIViewController {
+final class PersonalPageViewController: UIViewController {
 	
 	// MARK: - Constants
 	

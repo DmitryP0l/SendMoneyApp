@@ -15,7 +15,7 @@
 		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
-		0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeViewController.swift */; };
+		0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */; };
 		0AB607162C749BD2001916AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0AB607152C749BD2001916AE /* Assets.xcassets */; };
 		0AB607192C749BD2001916AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AB607172C749BD2001916AE /* LaunchScreen.storyboard */; };
 		0AB607242C749BD3001916AE /* SendMoneyAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607232C749BD3001916AE /* SendMoneyAppTests.swift */; };
@@ -23,7 +23,10 @@
 		0AB607302C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */; };
 		0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6073C2C87554B001916AE /* RegistrationViewController.swift */; };
 		0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */; };
-		0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */; };
+		0ACE33AA2CB2DF8E009524C9 /* WelcomeScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE33A92CB2DF8E009524C9 /* WelcomeScreenInteractor.swift */; };
+		0ACE33AC2CB2E00F009524C9 /* WelcomeScreenPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE33AB2CB2E00F009524C9 /* WelcomeScreenPresenter.swift */; };
+		0ACE33AF2CB2E043009524C9 /* WelcomeScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACE33AE2CB2E043009524C9 /* WelcomeScreenRouter.swift */; };
+		0AE9E5742CA2C6190083B615 /* PersonalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE9E5732CA2C6190083B615 /* PersonalPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +56,7 @@
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0AB607102C749BCE001916AE /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 		0AB607152C749BD2001916AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0AB607182C749BD2001916AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0AB6071A2C749BD2001916AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,7 +67,10 @@
 		0AB6072F2C749BD3001916AE /* SendMoneyAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMoneyAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		0AB6073C2C87554B001916AE /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneratePerson.swift; sourceTree = "<group>"; };
-		0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPersonViewController.swift; sourceTree = "<group>"; };
+		0ACE33A92CB2DF8E009524C9 /* WelcomeScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenInteractor.swift; sourceTree = "<group>"; };
+		0ACE33AB2CB2E00F009524C9 /* WelcomeScreenPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenPresenter.swift; sourceTree = "<group>"; };
+		0ACE33AE2CB2E043009524C9 /* WelcomeScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenRouter.swift; sourceTree = "<group>"; };
+		0AE9E5732CA2C6190083B615 /* PersonalPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,18 +98,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A0F82AA2C90855E00E518CA /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				0AB607102C749BCE001916AE /* WelcomeViewController.swift */,
-				0AB6073C2C87554B001916AE /* RegistrationViewController.swift */,
-				0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */,
-				0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */,
-				0AE9E5732CA2C6190083B615 /* DetailPersonViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
 		0A0F82AE2C9087CB00E518CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,9 +140,13 @@
 		0AB6070B2C749BCE001916AE /* SendMoneyApp */ = {
 			isa = PBXGroup;
 			children = (
+				0ACE33A42CB2BF1E009524C9 /* WelcomeScreen */,
+				0ACE33A52CB2BF43009524C9 /* RegistrationScreen */,
+				0ACE33A62CB2BF71009524C9 /* HomePageScreen */,
+				0ACE33A72CB2BF9B009524C9 /* ContactListScreen */,
+				0ACE33A82CB2C161009524C9 /* PersonalPageScreen */,
 				0A0F82AE2C9087CB00E518CA /* Cells */,
 				0A0F82B82C93797000E518CA /* Models */,
-				0A0F82AA2C90855E00E518CA /* ViewControllers */,
 				0AB6071A2C749BD2001916AE /* Info.plist */,
 				0AB6073E2C875597001916AE /* Support Files */,
 			);
@@ -181,6 +179,49 @@
 				0AB607172C749BD2001916AE /* LaunchScreen.storyboard */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		0ACE33A42CB2BF1E009524C9 /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0ACE33A92CB2DF8E009524C9 /* WelcomeScreenInteractor.swift */,
+				0ACE33AB2CB2E00F009524C9 /* WelcomeScreenPresenter.swift */,
+				0ACE33AE2CB2E043009524C9 /* WelcomeScreenRouter.swift */,
+				0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */,
+			);
+			path = WelcomeScreen;
+			sourceTree = "<group>";
+		};
+		0ACE33A52CB2BF43009524C9 /* RegistrationScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0AB6073C2C87554B001916AE /* RegistrationViewController.swift */,
+			);
+			path = RegistrationScreen;
+			sourceTree = "<group>";
+		};
+		0ACE33A62CB2BF71009524C9 /* HomePageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */,
+			);
+			path = HomePageScreen;
+			sourceTree = "<group>";
+		};
+		0ACE33A72CB2BF9B009524C9 /* ContactListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */,
+			);
+			path = ContactListScreen;
+			sourceTree = "<group>";
+		};
+		0ACE33A82CB2C161009524C9 /* PersonalPageScreen */ = {
+			isa = PBXGroup;
+			children = (
+				0AE9E5732CA2C6190083B615 /* PersonalPageViewController.swift */,
+			);
+			path = PersonalPageScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -314,12 +355,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */,
+				0ACE33AC2CB2E00F009524C9 /* WelcomeScreenPresenter.swift in Sources */,
 				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
 				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
-				0AB607112C749BCE001916AE /* WelcomeViewController.swift in Sources */,
+				0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */,
 				0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */,
-				0AE9E5742CA2C6190083B615 /* DetailPersonViewController.swift in Sources */,
+				0ACE33AF2CB2E043009524C9 /* WelcomeScreenRouter.swift in Sources */,
+				0ACE33AA2CB2DF8E009524C9 /* WelcomeScreenInteractor.swift in Sources */,
+				0AE9E5742CA2C6190083B615 /* PersonalPageViewController.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
 				0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */,
