@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// определяет логику презентации для экрана WelcomeScreen
+/// определяет логику презентации экрана RegistrationScreen для экрана WelcomeScreen
 protocol WelcomeScreenPresentationLogic {
 	func presentRegistrationScreen()
 }
