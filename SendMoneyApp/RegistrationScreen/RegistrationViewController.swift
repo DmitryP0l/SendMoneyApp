@@ -7,18 +7,28 @@
 
 import UIKit
 
+/// Протокол определяющий методы для отображения данных в RegistrationViewController
+protocol RegistrationDisplayLogic: AnyObject {
+	func displayHomePage()
+	func displayAlert(viewModel: RegistrationModels.EnterCredentials.ViewModel)
+}
+
 final class RegistrationViewController: UIViewController {
 	
-	// MARK: - Constants
-	/// инициализация и настройка UI элементов
-
+	// MARK: - Internal properties
+	
+	var interactor: RegistrationBusinessLogic?
+	
+	// MARK: - Private properties
+	
+	/// вью контейнер для UILabel и UIButton,и для визуального выделения
 	private var registrationViewContainer: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .lightGray
 		return view
 	}()
-	
+	/// текст "log in"
 	private var logInLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
@@ -29,7 +39,7 @@ final class RegistrationViewController: UIViewController {
 		label.numberOfLines = 0
 		return label
 	}()
-	
+	/// поле ввода логина
 	private var logInTextField: UITextField = {
 		let textField = UITextField()
 		textField.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +53,7 @@ final class RegistrationViewController: UIViewController {
 		textField.clearButtonMode = .whileEditing
 		return textField
 	}()
-	
+	/// поле ввода пароля
 	private var passwordTextField: UITextField = {
 		let textField = UITextField()
 		textField.translatesAutoresizingMaskIntoConstraints = false
@@ -57,7 +67,7 @@ final class RegistrationViewController: UIViewController {
 		textField.clearButtonMode = .whileEditing
 		return textField
 	}()
-	
+	/// кнопка ввода логин/пароль и перехода на следующий экран HomePage
 	private var enterButton: UIButton = {
 		let button = UIButton(type: .system)
 		button.translatesAutoresizingMaskIntoConstraints = false
@@ -70,8 +80,10 @@ final class RegistrationViewController: UIViewController {
 	}()
 	
 	// MARK: - Lifecycle
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		setupScene()
 		setupScreen()
 		keyboardNotification()
 	}
@@ -86,6 +98,17 @@ final class RegistrationViewController: UIViewController {
 		setupLogInTextField()
 		setupPasswordTextField()
 		setupEnterButton()
+	}
+	private func setupScene() {
+		let viewController = self
+		let interactor = RegistrationInteractor()
+		let presenter = RegistrationPresenter()
+		let router = RegistrationRouter()
+		
+		viewController.interactor = interactor
+		interactor.presenter = presenter
+		presenter.viewController = viewController
+		router.viewController = viewController
 	}
 	
 	// MARK: - Setup constrains
@@ -141,7 +164,7 @@ final class RegistrationViewController: UIViewController {
 		passwordTextField.clipsToBounds = true
 	}
 	
-	///Настройка ограничений (constrains) для enterButton
+	/// Настройка ограничений (constrains) для enterButton
 	private func setupEnterButton() {
 		registrationViewContainer.addSubview(enterButton)
 		
@@ -154,14 +177,14 @@ final class RegistrationViewController: UIViewController {
 		enterButton.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
 	}
 	
-	///  Регистрация уведомлений на появление/скрытие клавиатуры
+	/// Регистрация уведомлений на появление/скрытие клавиатуры
 	private func keyboardNotification() {
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
 	
 	// MARK: - objc Actions
-	///  методы, отрабатывающие по нотификации на появление и скрытие клавиатуры, и изменяющие размер self.view
+	/// Методы, отрабатывающие по нотификации на появление и скрытие клавиатуры, и изменяющие размер self.view
 	@objc private func keyboardWillShow(notification: Notification) {
 		guard let userInfo = notification.userInfo else {return}
 		guard let keyboardSize = userInfo[RegistrationViewController.keyboardFrameEndUserInfoKey] as? NSValue else {return}
@@ -176,24 +199,33 @@ final class RegistrationViewController: UIViewController {
 			self.view.frame.origin.y = 0
 		}
 	}
-	/// метод действия на тап по enterButton. содержит анимацию изменения размера кнопки при нажатии на нее. Переход на HomePageViewController через NavigationController
-	@objc private func buttonTapped(sender: UIButton) {
-		UIView.animate(
-			withDuration: 0.1,
-			animations: {
-				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-			},
-			completion: { _ in
-				UIView.animate(withDuration: 0.1) {
-					sender.transform = CGAffineTransform.identity
-				}
-			})
+	/// Метод действия на тап по enterButton. содержит анимацию изменения размера кнопки при нажатии на нее. Переход на HomePageViewController через NavigationController
+	@objc private func buttonTapped() {
+		let request = RegistrationModels.EnterCredentials.Request(
+			login: logInTextField.text,
+			password: passwordTextField.text)
 		
-		let homePageVC = HomePageViewController()
-		navigationController?.pushViewController(homePageVC, animated: true)
+		interactor?.enterButtonTapped(request: request)
 	}
-	
 	deinit {
 		NotificationCenter.default.removeObserver(self)
+	}
+}
+
+// MARK: - extension RegistrationDisplayLogic
+extension RegistrationViewController: RegistrationDisplayLogic {
+	
+	/// Метод вызывается презентером для отображения следующего экрана HomePage Screen
+	func displayHomePage() {
+		let router = RegistrationRouter()
+		router.viewController = self
+		router.routeToHomePage()
+	}
+	
+	/// Метод вызывается презентером для отображения сообщения об ошибке
+	func displayAlert(viewModel: RegistrationModels.EnterCredentials.ViewModel) {
+		let alert = UIAlertController(title: "Error", message: viewModel.message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: .default))
+		present(alert, animated: true)
 	}
 }

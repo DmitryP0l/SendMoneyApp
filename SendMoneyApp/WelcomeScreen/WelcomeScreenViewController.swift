@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// протокол, определяющий методы для отображения данных в WelcomeViewController
+protocol WelcomeDisplayLogic: AnyObject {
+	func displayRegistrationScreen()
+}
+
 final class WelcomeScreenViewController: UIViewController {
 
 	// MARK: - Internal properties

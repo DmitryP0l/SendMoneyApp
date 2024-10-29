@@ -12,12 +12,8 @@ import Foundation
 protocol WelcomeScreenBusinessLogic {
 	func startButtonTapped()
 }
-/// протокол, определяющий методы для отображения данных в WelcomeViewController
-protocol WelcomeDisplayLogic: AnyObject {
-	func displayRegistrationScreen()
-}
 
-class WelcomeScreenInteractor: WelcomeScreenBusinessLogic {
+final class WelcomeScreenInteractor: WelcomeScreenBusinessLogic {
 	var presenter: WelcomeScreenPresentationLogic?
 	
 	func startButtonTapped() {

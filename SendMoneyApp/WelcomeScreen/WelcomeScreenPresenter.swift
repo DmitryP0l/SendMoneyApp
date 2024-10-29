@@ -12,7 +12,7 @@ import Foundation
 protocol WelcomeScreenPresentationLogic {
 	func presentRegistrationScreen()
 }
-class WelcomeScreenPresenter: WelcomeScreenPresentationLogic {
+final class WelcomeScreenPresenter: WelcomeScreenPresentationLogic {
 	weak var viewController: WelcomeDisplayLogic?
 	
 	/// метод вызывается интерактором для подготовки данных и передачи их обратно во ViewController

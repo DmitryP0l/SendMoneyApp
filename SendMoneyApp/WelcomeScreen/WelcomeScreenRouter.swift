@@ -13,7 +13,7 @@ protocol WelcomeScreenRouterLogic {
 	func routeToRegistrationScreen()
 }
 
-class WelcomeScreenRouter: WelcomeScreenRouterLogic {
+final class WelcomeScreenRouter: WelcomeScreenRouterLogic {
 	weak var viewController: UIViewController?
 	
 	/// метод вызывается для выполнения перехода на экран RegistrationScreen
