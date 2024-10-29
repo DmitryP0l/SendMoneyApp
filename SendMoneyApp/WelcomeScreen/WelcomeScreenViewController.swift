@@ -145,14 +145,6 @@ final class WelcomeScreenViewController: UIViewController {
 	}
 	
 	// MARK: - objc Actions
-	
-	/// 1. Пользователь нажимает на startButton.
-	/// 2. WelcomeScreenViewController вызывает interactor?.startButtonTapped().
-	/// 3. WelcomeScreenInteractor вызывает presenter?.presentRegistrationScreen().
-	/// 4. WelcomeScreenPresenter вызывает viewController?.displayRegistrationScreen().
-	/// 5. WelcomeScreenViewController вызывает router.routeToRegistrationScreen().
-	/// 6. WelcomeScreenRouter выполняет переход на RegistrationViewController.
-	
 	@objc private func buttonTapped() {
 		interactor?.startButtonTapped()
 	}
