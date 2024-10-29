@@ -14,18 +14,18 @@ final class HomePageViewCell: UITableViewCell {
 	/// инициализация и настройка UI элементов и констант
 	static let identifier = "HomePageViewCell"
 	
-	let profileImageView: UIImageView = {
+	let transactionImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFit
 		return imageView
 	}()
 	
-	let nameLabel: UILabel = {
+	let transactionNameLabel: UILabel = {
 		let label = UILabel()
 		return label
 	}()
 	
-	let amountLabel: UILabel = {
+	let transactionAmountLabel: UILabel = {
 		let label = UILabel()
 		return label
 	}()
@@ -43,30 +43,30 @@ final class HomePageViewCell: UITableViewCell {
 	// MARK: - Private methods
 	/// Настройка ограничений (constrains) для элементов ячейки.
 	private func setupViews() {
-		profileImageView.translatesAutoresizingMaskIntoConstraints = false
-		nameLabel.translatesAutoresizingMaskIntoConstraints = false
-		amountLabel.translatesAutoresizingMaskIntoConstraints = false
+		transactionImageView.translatesAutoresizingMaskIntoConstraints = false
+		transactionNameLabel.translatesAutoresizingMaskIntoConstraints = false
+		transactionAmountLabel.translatesAutoresizingMaskIntoConstraints = false
 		
-		contentView.addSubview(profileImageView)
-		contentView.addSubview(nameLabel)
-		contentView.addSubview(amountLabel)
+		contentView.addSubview(transactionImageView)
+		contentView.addSubview(transactionNameLabel)
+		contentView.addSubview(transactionAmountLabel)
 		
 		NSLayoutConstraint.activate([
-			profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-			profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			profileImageView.widthAnchor.constraint(equalToConstant: 40),
-			profileImageView.heightAnchor.constraint(equalToConstant: 40),
+			transactionImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			transactionImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			transactionImageView.widthAnchor.constraint(equalToConstant: 40),
+			transactionImageView.heightAnchor.constraint(equalToConstant: 40),
 			
-			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-			nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			transactionNameLabel.leadingAnchor.constraint(equalTo: transactionImageView.trailingAnchor, constant: 10),
+			transactionNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
 			
-			amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-			amountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			transactionAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+			transactionAmountLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		]
 		)
 		
-		profileImageView.layer.cornerRadius = 20
-		profileImageView.clipsToBounds = true
+		transactionImageView.layer.cornerRadius = 20
+		transactionImageView.clipsToBounds = true
 	}
 }
 

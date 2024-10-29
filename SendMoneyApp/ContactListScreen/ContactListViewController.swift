@@ -111,8 +111,8 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: ContactListViewCell.identifier, for: indexPath) as! ContactListViewCell
 		let contacts = filteredContactsDataSource[indexPath.row]
-		cell.profileImageView.image = UIImage(systemName: contacts.imageName)
-		cell.nameLabel.text = contacts.name
+		cell.personImageView.image = UIImage(systemName: contacts.imageName)
+		cell.personNameLabel.text = contacts.name
 		return cell
 	}
 	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на PersonalPageViewController

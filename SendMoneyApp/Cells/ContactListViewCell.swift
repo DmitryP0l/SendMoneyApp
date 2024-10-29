@@ -16,13 +16,13 @@ final class ContactListViewCell: UITableViewCell {
 	/// инициализация и настройка UI элементов и констант
 	static let identifier = "ContactListViewCell"
 	
-	let profileImageView: UIImageView = {
+	let personImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.contentMode = .scaleAspectFit
 		return imageView
 	}()
 	
-	let nameLabel: UILabel = {
+	let personNameLabel: UILabel = {
 		let label = UILabel()
 		return label
 	}()
@@ -41,23 +41,23 @@ final class ContactListViewCell: UITableViewCell {
 	/// Настройка ограничений (constrains) для элементов ячейки.
 	
 	private func setupViews() {
-		profileImageView.translatesAutoresizingMaskIntoConstraints = false
-		nameLabel.translatesAutoresizingMaskIntoConstraints = false
+		personImageView.translatesAutoresizingMaskIntoConstraints = false
+		personNameLabel.translatesAutoresizingMaskIntoConstraints = false
 		
-		contentView.addSubview(profileImageView)
-		contentView.addSubview(nameLabel)
+		contentView.addSubview(personImageView)
+		contentView.addSubview(personNameLabel)
 		
 		NSLayoutConstraint.activate([
-			profileImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-			profileImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-			profileImageView.widthAnchor.constraint(equalToConstant: 40),
-			profileImageView.heightAnchor.constraint(equalToConstant: 40),
+			personImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+			personImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+			personImageView.widthAnchor.constraint(equalToConstant: 40),
+			personImageView.heightAnchor.constraint(equalToConstant: 40),
 			
-			nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10),
-			nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+			personNameLabel.leadingAnchor.constraint(equalTo: personImageView.trailingAnchor, constant: 10),
+			personNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 			]
 		)
-		profileImageView.layer.cornerRadius = 20
-		profileImageView.clipsToBounds = true
+		personImageView.layer.cornerRadius = 20
+		personImageView.clipsToBounds = true
 	}
 }

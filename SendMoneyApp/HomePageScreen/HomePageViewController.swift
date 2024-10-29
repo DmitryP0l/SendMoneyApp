@@ -281,9 +281,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: HomePageViewCell.identifier, for: indexPath) as! HomePageViewCell
 		let transaction = transactionsDataSource[indexPath.row]
-		cell.profileImageView.image = UIImage(systemName: transaction.imageName)
-		cell.nameLabel.text = transaction.name
-		cell.amountLabel.text = String(transaction.amount)
+		cell.transactionImageView.image = UIImage(systemName: transaction.imageName)
+		cell.transactionNameLabel.text = transaction.name
+		cell.transactionAmountLabel.text = String(transaction.amount)
 		return cell
 	}
 	
