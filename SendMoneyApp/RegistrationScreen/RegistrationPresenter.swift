@@ -14,7 +14,7 @@ protocol RegistrationPresentationLogic {
 	func presentAlert(response: RegistrationModels.EnterCredentials.Response)
 }
 
-class RegistrationPresenter: RegistrationPresentationLogic {
+final class RegistrationPresenter: RegistrationPresentationLogic {
 	weak var viewController: RegistrationDisplayLogic?
 	
 	/// func presentHomePage(response: ) - Метод вызывается интерактором для подготовки данных и передачи их обратно во ViewController при успешной валидации

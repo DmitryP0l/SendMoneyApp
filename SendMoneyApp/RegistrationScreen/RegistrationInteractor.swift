@@ -13,7 +13,8 @@ protocol RegistrationBusinessLogic {
 	func enterButtonTapped(request: RegistrationModels.EnterCredentials.Request)
 }
 
-class RegistrationInteractor: RegistrationBusinessLogic {
+/// класс, реализующий бизнес логику для экрана Registration Screen
+final class RegistrationInteractor: RegistrationBusinessLogic {
 	var presenter: RegistrationPresentationLogic?
 	
 	/// func enterButtonTapped(request:) вызывается когда пользователь нажимает на кнопку enterButton, и передает данные для обработки

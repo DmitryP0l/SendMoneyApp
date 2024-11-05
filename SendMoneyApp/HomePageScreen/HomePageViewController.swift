@@ -5,10 +5,19 @@
 //  Created by Dmitry P on 8.09.24.
 //
 
-	
 import UIKit
 
+protocol HomePageDisplayLogic: AnyObject {
+	func displayUserData(viewModel: HomePageModels.UserData.ViewModel)
+	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel)
+	func displayContacts()
+}
+
 final class HomePageViewController: UIViewController {
+	
+	// MARK: - Internal properties
+	
+	var interactor: HomePageBussinessLogic?
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов
@@ -106,6 +115,7 @@ final class HomePageViewController: UIViewController {
 		tableView.register(HomePageViewCell.self, forCellReuseIdentifier: HomePageViewCell.identifier)
 		tableView.tableHeaderView = createTableHeaderView()
 		setupScreen()
+		setupScene()
 	}
 	
 	// MARK: - Private methods
@@ -120,6 +130,19 @@ final class HomePageViewController: UIViewController {
 		setupTitleCurrentBalanceLabel()
 		setupAddMoneyButton()
 		setupContactsButton()
+	}
+	
+	private func setupScene() {
+		let viewController = self
+		let interactor = HomePageInteractor()
+		let presenter = HomePagePresenter()
+		let router = HomePageRouter()
+		
+		viewController.interactor = interactor
+		interactor.presenter = presenter
+		presenter.viewController = viewController
+		router.viewController = viewController
+		
 	}
 	/// Метод настройки хедера для таблицы с текстовым полем
 	private func createTableHeaderView() -> UIView {
@@ -219,7 +242,7 @@ final class HomePageViewController: UIViewController {
 	
 	// MARK: - objc Actions
 	
-	/// метод отрабатывающий нажатие по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры
+	/// метод отрабатывающий нажатие по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры. Передает данные в метод addMoney интерактора.
 	@objc private func addMoneyButtonTapped(sender: UIButton) {
 		print("addMoneyButtonTapped")
 		UIView.animate(
@@ -242,8 +265,8 @@ final class HomePageViewController: UIViewController {
 		
 		let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
 		let okAction = UIAlertAction(title: "ok", style: .default) { _ in
-			if let textField = alertController.textFields?.first, let text = textField.text {
-				print(text)
+			if let amountText = alertController.textFields?.first?.text, let amount = Int(amountText) {
+				self.interactor?.addMoney(amount: amount)
 			}
 		}
 		alertController.addAction(cancelAction)
@@ -251,23 +274,10 @@ final class HomePageViewController: UIViewController {
 		
 		present(alertController, animated: true)
 	}
-	/// метод действия на тап по contactsButton. содержит анимацию изменения размера кнопки при нажатии на нее.
-	@objc private func contactsButtonTapped(sender: UIButton) {
-		print("contactsButtonTapped")
-		UIView.animate(
-			withDuration: 0.1,
-			animations: {
-				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-			},
-			completion: { _ in
-				UIView.animate(withDuration: 0.1) {
-					sender.transform = CGAffineTransform.identity
-				}
-			})
-		let contactListVC = ContactListViewController()
-		navigationController?.pushViewController(contactListVC, animated: true)
+	/// вызывает метод интерактора showContacts на тап по кнопке contactsButton.
+	@objc private func contactsButtonTapped() {
+		interactor?.showContacts()
 	}
-	
 }
 
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
@@ -291,3 +301,31 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }
+
+// MARK: - extension UITableViewDelegate, UITableViewDataSource
+
+extension HomePageViewController: HomePageDisplayLogic {
+	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
+		userNameLabel.text = "Hello, \(viewModel.userName)"
+		currentBalanceLabel.text = "\(viewModel.balance)"
+	}
+	
+	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {
+		tableView.reloadData()
+	}
+	
+	func displayContacts() {
+		let router = HomePageRouter()
+		router.viewController = self
+		router.routeToContacts()
+	}
+}
+
+
+/// разобраться с заполнением ячейки на главном экране, дополнить ярлыком даты, номером id транзакции, и тд
+/// создать массив с данными для заполнения по основной модели данных экрана с контактами и главного экрана
+/// переделать генрацию массива на новый только для сторонних пользователей
+/// основного пользователя брать из логина при вводе, генерировать ему уникальный idмпроверять со всеми пользователями
+/// добавить заполнение из нового массива в ячейки
+/// заполнять массив транзакций во время самой транзакции и передавать сгенерированный id операции долбавить метод для добавления в массив
+///
