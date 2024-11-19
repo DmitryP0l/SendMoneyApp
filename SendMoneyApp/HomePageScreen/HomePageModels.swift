@@ -13,6 +13,18 @@
 import Foundation
 
 struct HomePageModels {
+	
+	struct MainUserData {
+		struct Request {}
+		struct Response {
+			var mainUser: MainUser
+		}
+		struct ViewModel {
+			var mainUserName: String
+			var mainUserBalance: Int
+		}
+	}
+	
 	struct UserData {
 		struct Request {}
 		struct Response {

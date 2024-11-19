@@ -16,22 +16,19 @@ protocol HomePageBussinessLogic {
 
 /// класс, реализующий бизнес логику на экране HomePageScreen
 final class HomePageInteractor: HomePageBussinessLogic {
+	
 	var presenter: HomePagePresentationLogic?
-	var database: DataBase?
+	private var database: DataBase?
+	private let businessLogicModule: BusinessLogicModule? = nil
+	
 	/// Добавление денег к балансу основного пользователя
 	/// - Parameter amount: число, на которое будет увеличен баланс пользователя
 	func addMoney(amount: Int) {
-		database?.mainUser.user.balance += amount
-		/// Создание новой транзакции
-		let transaction = Transaction(
-			id: UUID(),
-			amount: amount,
-			date: Date(),
-			userId: database?.mainUser.user.id ?? UUID(),
-			isIncoming: true)
+		let updatedMainUser = businessLogicModule!.addMoney(to: database!.mainUser, amount: amount)
 		/// Обновление данных для отображения
-		let response = HomePageModels.UserData.Response(user: (database?.mainUser.user)!)
-		presenter?.presentUserData(response: response)
+		let response = HomePageModels.MainUserData.Response(mainUser: updatedMainUser)
+		
+		presenter!.presentMainUserData(response: response)
 	}
 	
 	/// Вызов метода у презентера для перехода на экран контактов

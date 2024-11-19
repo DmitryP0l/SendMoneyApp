@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomePageDisplayLogic: AnyObject {
-	func displayUserData(viewModel: HomePageModels.UserData.ViewModel)
+	func displayUserData(viewModel: HomePageModels.MainUserData.ViewModel)
 	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel)
 	func displayContacts()
 }
@@ -305,9 +305,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
 
 extension HomePageViewController: HomePageDisplayLogic {
-	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
-		userNameLabel.text = "Hello, \(viewModel.userName)"
-		currentBalanceLabel.text = "\(viewModel.balance)"
+	func displayUserData(viewModel: HomePageModels.MainUserData.ViewModel) {
+		userNameLabel.text = "Hello, \(viewModel.mainUserName)"
+		currentBalanceLabel.text = "\(viewModel.mainUserBalance)"
 	}
 	
 	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {
