@@ -8,11 +8,6 @@
 
 import UIKit
 
-/// Протокол определяет логику маршрутизации для экрана HomePage Screen
-protocol HomePageRoutingLogic {
-	func routeToContacts()
-}
-
 /// Класс, реализующий протокол HomePageRoutingLogic для перехода на ContactListViewController
 final class HomePageRouter: HomePageRoutingLogic {
 	weak var viewController: UIViewController?

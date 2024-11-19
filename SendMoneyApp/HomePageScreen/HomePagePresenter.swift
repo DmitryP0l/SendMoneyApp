@@ -8,23 +8,25 @@
 
 import Foundation
 
-/// Этот потокол определяет логику презентации для экрана HomePageScreen
-protocol HomePagePresentationLogic {
-	func presentMainUserData(response: HomePageModels.MainUserData.Response)
-	func presentContacts()
-}
-
 final class HomePagePresenter: HomePagePresentationLogic {
+	
+	
 	
 	weak var viewController: HomePageDisplayLogic?
 	
-	/// Метод, упаковывающий данные, полученные из интерактора в методе addMoney, и передающий для отображения во ViewController
-	func presentMainUserData(response: HomePageModels.MainUserData.Response) {
-		let viewModel = HomePageModels.MainUserData.ViewModel(
-			mainUserName: response.mainUser.user.name,
-			mainUserBalance: response.mainUser.user.balance)
+	func presentUserData(response: HomePageModels.UserData.Response) {
+		let viewModel = HomePageModels.UserData.ViewModel(
+			userName: response.user.name,
+			balance: response.user.balance)
 		viewController?.displayUserData(viewModel: viewModel)
 	}
+	/// Метод, упаковывающий данные, полученные из интерактора в методе addMoney, и передающий для отображения во ViewController
+//	func presentUserData(response: HomePageModels.UserData.Response) {
+//		let viewModel = HomePageModels.UserData.ViewModel(
+//			mainUserName: response.mainUser.user.name,
+//			mainUserBalance: response.mainUser.user.balance)
+//		viewController?.displayUserData(viewModel: viewModel)
+//	}
 	
 	/// Метод, передающий вызов экрана контактов по VIP циклу.
 	func presentContacts() {

@@ -7,12 +7,6 @@
 
 import UIKit
 
-protocol HomePageDisplayLogic: AnyObject {
-	func displayUserData(viewModel: HomePageModels.MainUserData.ViewModel)
-	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel)
-	func displayContacts()
-}
-
 final class HomePageViewController: UIViewController {
 	
 	// MARK: - Internal properties
@@ -43,7 +37,7 @@ final class HomePageViewController: UIViewController {
 	private var userNameLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "Hello User"
+		//label.text = "Hello User"
 		label.textAlignment = .left
 		label.textColor = .white
 		label.font = label.font.withSize(24)
@@ -305,9 +299,9 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - extension UITableViewDelegate, UITableViewDataSource
 
 extension HomePageViewController: HomePageDisplayLogic {
-	func displayUserData(viewModel: HomePageModels.MainUserData.ViewModel) {
-		userNameLabel.text = "Hello, \(viewModel.mainUserName)"
-		currentBalanceLabel.text = "\(viewModel.mainUserBalance)"
+	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
+		userNameLabel.text = "Hello, \(viewModel.userName)"
+		currentBalanceLabel.text = "\(viewModel.balance)"
 	}
 	
 	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {

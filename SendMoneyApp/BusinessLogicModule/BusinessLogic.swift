@@ -19,6 +19,12 @@ protocol BusinessLogic {
 
 class BusinessLogicModule: BusinessLogic {
 	
+	private var globalData: GlobalData
+	
+	init(globalData: GlobalData) {
+		self.globalData = globalData
+	}
+	
 	func addMoney(to mainUser: MainUser, amount: Int) -> MainUser {
 		var updatedMainUser = mainUser
 			updatedMainUser.user.balance += amount

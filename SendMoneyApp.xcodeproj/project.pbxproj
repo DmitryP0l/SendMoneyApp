@@ -24,6 +24,7 @@
 		0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */; };
 		0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */; };
 		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
+		0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
 		0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */; };
@@ -76,6 +77,7 @@
 		0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewCell.swift; sourceTree = "<group>"; };
 		0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageProtocols.swift; sourceTree = "<group>"; };
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 		0ACE33A62CB2BF71009524C9 /* HomePageScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */,
 				0A0259192CD15FFD009C22C2 /* HomePageModels.swift */,
 				0A02591B2CD162C1009C22C2 /* HomePageInteractor.swift */,
 				0A02591D2CD165FC009C22C2 /* HomePagePresenter.swift */,
@@ -404,6 +407,7 @@
 				0A02591A2CD15FFD009C22C2 /* HomePageModels.swift in Sources */,
 				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0A0259182CD127DB009C22C2 /* DataModel.swift in Sources */,
+				0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */,
 				0A02591E2CD165FC009C22C2 /* HomePagePresenter.swift in Sources */,
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
 				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
