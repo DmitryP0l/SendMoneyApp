@@ -10,12 +10,12 @@ import UIKit
 final class HomePageViewController: UIViewController {
 	
 	// MARK: - Internal properties
-	
 	var interactor: HomePageBussinessLogic?
+	private var router: HomePageRoutingLogic?
+	var displayedTransactions: [HomePageModels.Transactions.ViewModel.DisplayedTransaction] = []
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов
-	
 	/// Views
 	private var userInfoContainerView: UIView = {
 		let view = UIView()
@@ -37,7 +37,6 @@ final class HomePageViewController: UIViewController {
 	private var userNameLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		//label.text = "Hello User"
 		label.textAlignment = .left
 		label.textColor = .white
 		label.font = label.font.withSize(24)
@@ -59,7 +58,6 @@ final class HomePageViewController: UIViewController {
 	private var currentBalanceLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "100.000"
 		label.textAlignment = .left
 		label.textColor = .white
 		label.font = label.font.withSize(36)
@@ -94,27 +92,18 @@ final class HomePageViewController: UIViewController {
 		return button
 	}()
 	
-	private let transactionsDataSource = [
-	TransactionInfo(imageName: "person.circle", name: "Ivan Ivanov", amount: 12345),
-	TransactionInfo(imageName: "person.circle", name: "Semen Semenov", amount: 21345),
-	TransactionInfo(imageName: "person.circle", name: "Fedor Fedorov", amount: 65432)
-	]
-	
 	// MARK: - Lifecycle
-		
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.delegate = self
 		tableView.dataSource = self
 		tableView.register(HomePageViewCell.self, forCellReuseIdentifier: HomePageViewCell.identifier)
 		tableView.tableHeaderView = createTableHeaderView()
-		setupScreen()
+		setupUI()
 		setupScene()
 	}
-	
-	// MARK: - Private methods
-	///  Метод настройки всего экрана регистрации
-	private func setupScreen() {
+	// MARK: - Private methods UI
+	private func setupUI() {
 		navigationItem.hidesBackButton = false //  убирает кнопку "назад" из навбара. в релизе - true
 		view.backgroundColor = .darkGray
 		setupUserInfoContainerView()
@@ -126,18 +115,6 @@ final class HomePageViewController: UIViewController {
 		setupContactsButton()
 	}
 	
-	private func setupScene() {
-		let viewController = self
-		let interactor = HomePageInteractor()
-		let presenter = HomePagePresenter()
-		let router = HomePageRouter()
-		
-		viewController.interactor = interactor
-		interactor.presenter = presenter
-		presenter.viewController = viewController
-		router.viewController = viewController
-		
-	}
 	/// Метод настройки хедера для таблицы с текстовым полем
 	private func createTableHeaderView() -> UIView {
 		let headerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: 50))
@@ -153,7 +130,7 @@ final class HomePageViewController: UIViewController {
 		return headerView
 	}
 	
-	// MARK: - Setup constrains
+	//MARK: - Setup constrains
 	/// Настройка ограничений (constrains) для userInfoContainerView
 	private func setupUserInfoContainerView() {
 		view.addSubview(userInfoContainerView)
@@ -178,7 +155,6 @@ final class HomePageViewController: UIViewController {
 		])
 		tableView.layer.cornerRadius = 40
 	}
-	
 	/// Настройка ограничений (constrains) для userNameLabel
 	private func setupUserNameLabel() {
 		userInfoContainerView.addSubview(userNameLabel)
@@ -188,7 +164,6 @@ final class HomePageViewController: UIViewController {
 			userNameLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
 		])
 	}
-	
 	/// Настройка ограничений (constrains) для titleCurrentBalanceLabel
 	private func setupTitleCurrentBalanceLabel() {
 		userInfoContainerView.addSubview(titleCurrentBalanceLabel)
@@ -198,7 +173,6 @@ final class HomePageViewController: UIViewController {
 			titleCurrentBalanceLabel.leadingAnchor.constraint(equalTo: userInfoContainerView.leadingAnchor, constant: 24)
 		])
 	}
-	
 	/// Настройка ограничений (constrains) для currentBalanceLabel
 	private func setupCurrentBalanceLabel() {
 		userInfoContainerView.addSubview(currentBalanceLabel)
@@ -234,23 +208,38 @@ final class HomePageViewController: UIViewController {
 		contactsButton.addTarget(self, action: #selector(contactsButtonTapped), for: .touchUpInside)
 	}
 	
-	// MARK: - objc Actions
+	// MARK: - Private methods
 	
-	/// метод отрабатывающий нажатие по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры. Передает данные в метод addMoney интерактора.
-	@objc private func addMoneyButtonTapped(sender: UIButton) {
-		print("addMoneyButtonTapped")
-		UIView.animate(
-			withDuration: 0.1,
-			animations: {
-				sender.transform = CGAffineTransform(scaleX: 0.95, y: 0.95)
-			},
-			completion: { _ in
-				UIView.animate(withDuration: 0.1) {
-					sender.transform = CGAffineTransform.identity
-				}
-			})
+	private func setupScene() {
+		let viewController = self
+		let interactor = HomePageInteractor(globalData: GlobalData())
+		let presenter = HomePagePresenter()
+		let router = HomePageRouter()
 		
-		let alertController = UIAlertController(title: "enter the amount to increase the balance", message: nil, preferredStyle: .alert)
+		viewController.interactor = interactor
+		interactor.presenter = presenter
+		presenter.viewController = viewController
+		viewController.router = router
+		router.viewController = viewController
+	}
+	
+	private func fetchUserData() {
+		let request = HomePageModels.UserData.Request()
+		interactor?.fetchUserData(request: request)
+	}
+	
+	private func fetchTransactions() {
+		let request = HomePageModels.Transactions.Request()
+		interactor?.fetchTransactions(request: request)
+	}
+	
+	// MARK: - objc Actions
+	/// метод отрабатывающий нажатие по addMoneyButton. содержит анимацию изменения размера кнопки при нажатии на нее. Создает и вызывает алерт контроллер, с полем ввода и цифровым типом клавиатуры. Передает данные в метод addMoney интерактора.
+	@objc private func addMoneyButtonTapped() {
+		let alertController = UIAlertController(
+			title: "enter the amount to increase the balance",
+			message: nil,
+			preferredStyle: .alert)
 		
 		alertController.addTextField { textField in
 			textField.placeholder = "enter"
@@ -259,8 +248,10 @@ final class HomePageViewController: UIViewController {
 		
 		let cancelAction = UIAlertAction(title: "cancel", style: .cancel)
 		let okAction = UIAlertAction(title: "ok", style: .default) { _ in
-			if let amountText = alertController.textFields?.first?.text, let amount = Int(amountText) {
-				self.interactor?.addMoney(amount: amount)
+			if let amountText = alertController.textFields?.first?.text,
+			   let amount = Int(amountText) {
+				let request = HomePageModels.AddMoney.Request(amount: amount)
+				self.interactor?.addMoney(request: request)
 			}
 		}
 		alertController.addAction(cancelAction)
@@ -268,53 +259,45 @@ final class HomePageViewController: UIViewController {
 		
 		present(alertController, animated: true)
 	}
+	
 	/// вызывает метод интерактора showContacts на тап по кнопке contactsButton.
 	@objc private func contactsButtonTapped() {
-		interactor?.showContacts()
+		router?.routeToContacts()
 	}
 }
 
-// MARK: - extension UITableViewDelegate, UITableViewDataSource
-
-extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
+// MARK: - extension HomePageDisplayLogic
+extension HomePageViewController: HomePageDisplayLogic {
+	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
+		userNameLabel.text = "Hello, \(viewModel.mainUserName)"
+		currentBalanceLabel.text = "Balance \(viewModel.mainUserBalance)"
+		tableView.reloadData()
+	}
 	
+	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {
+		displayedTransactions = viewModel.displayedTransactions
+		tableView.reloadData()
+	}
+}
+// MARK: - extension UITableViewDelegate, UITableViewDataSource
+extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return transactionsDataSource.count
+		return displayedTransactions.count
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: HomePageViewCell.identifier, for: indexPath) as! HomePageViewCell
-		let transaction = transactionsDataSource[indexPath.row]
-		cell.transactionImageView.image = UIImage(systemName: transaction.imageName)
-		cell.transactionNameLabel.text = transaction.name
+		let transaction = displayedTransactions[indexPath.row]
+		cell.transactionImageView.image = UIImage(systemName: "person.circle")
+		cell.transactionNameLabel.text = transaction.description
 		cell.transactionAmountLabel.text = String(transaction.amount)
 		return cell
 	}
-	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		tableView.deselectRow(at: indexPath, animated: true)
-	}
 }
-
-// MARK: - extension UITableViewDelegate, UITableViewDataSource
-
-extension HomePageViewController: HomePageDisplayLogic {
-	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
-		userNameLabel.text = "Hello, \(viewModel.userName)"
-		currentBalanceLabel.text = "\(viewModel.balance)"
-	}
-	
-	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {
-		tableView.reloadData()
-	}
-	
-	func displayContacts() {
-		let router = HomePageRouter()
-		router.viewController = self
-		router.routeToContacts()
-	}
-}
-
+	//важное
+/// не отображает сразу данные по главному пользователю
+/// не работает заполнение таблицы из массива транзакций, разобраться с массивами и их заполнением
+///
 
 /// разобраться с заполнением ячейки на главном экране, дополнить ярлыком даты, номером id транзакции, и тд
 /// создать массив с данными для заполнения по основной модели данных экрана с контактами и главного экрана

@@ -29,11 +29,3 @@ protocol HomePagePresentationLogic {
 protocol HomePageRoutingLogic {
 	func routeToContacts()
 }
-
-protocol HomePageDataStore {
-	var mainUser: MainUser? { get set }
-}
-
-protocol HomePageDataPassing {
-	var dataStore: HomePageDataStore? { get }
-}

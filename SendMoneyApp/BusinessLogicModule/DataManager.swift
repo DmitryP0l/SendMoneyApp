@@ -10,15 +10,19 @@ import Foundation
 
 class GlobalData {
 	
-	var database = DataBase(
-		mainUser: MainUser(
-			user: User(id: UUID(),
-					   name: "MainUser",
-					   image: "person.circle",
-					   balance: 100),
-			transactions: []),
-		otherUsers: [
-			User(id: UUID(), name: "FirstUser", image: "person.circle", balance: 50),
-			User(id: UUID(), name: "SecondUser", image: "person.circle", balance: 150)
-		])
+	var database: DataBase
+	
+	init() {
+		self.database = DataBase(
+			mainUser: MainUser(
+				user: User(id: UUID(),
+						name: "MainUser",
+						image: "person.circle",
+						balance: 100),
+			 transactions: []),
+			otherUsers: [
+				User(id: UUID(), name: "FirstUser", image: "person.circle", balance: 50),
+			 User(id: UUID(), name: "SecondUser", image: "person.circle", balance: 150)
+		 ])
+	}
 }

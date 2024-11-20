@@ -10,26 +10,26 @@ import Foundation
 
 final class HomePagePresenter: HomePagePresentationLogic {
 	
-	
-	
 	weak var viewController: HomePageDisplayLogic?
 	
 	func presentUserData(response: HomePageModels.UserData.Response) {
 		let viewModel = HomePageModels.UserData.ViewModel(
-			userName: response.user.name,
-			balance: response.user.balance)
+			mainUserName: response.mainUser.user.name,
+			mainUserBalance: response.mainUser.user.balance
+		)
 		viewController?.displayUserData(viewModel: viewModel)
 	}
-	/// Метод, упаковывающий данные, полученные из интерактора в методе addMoney, и передающий для отображения во ViewController
-//	func presentUserData(response: HomePageModels.UserData.Response) {
-//		let viewModel = HomePageModels.UserData.ViewModel(
-//			mainUserName: response.mainUser.user.name,
-//			mainUserBalance: response.mainUser.user.balance)
-//		viewController?.displayUserData(viewModel: viewModel)
-//	}
 	
-	/// Метод, передающий вызов экрана контактов по VIP циклу.
-	func presentContacts() {
-		viewController?.displayContacts()
-	}	
+	func presentTransactions(response: HomePageModels.Transactions.Response) {
+		let displayedTransactions = response.transactions.map { transaction in
+			HomePageModels.Transactions.ViewModel.DisplayedTransaction(
+				description: transaction.isIncoming ? "Incoming" : "Outgoing",
+				amount: "\(transaction.amount)"
+			)
+		}
+		let viewModel = HomePageModels.Transactions.ViewModel(
+			displayedTransactions: displayedTransactions
+		)
+		viewController?.displayTransactions(viewModel: viewModel)
+	}
 }
