@@ -33,8 +33,18 @@ final class HomePageInteractor: HomePageBussinessLogic {
 	func addMoney(request: HomePageModels.AddMoney.Request) {
 		guard var mainUser = mainUser else { return }
 		mainUser.user.balance += request.amount
+		
+		let transaction = Transaction(
+			id: UUID(),
+			amount: request.amount,
+			date: Date(),
+			userId: UUID(),
+			isIncoming: true)
+		mainUser.transactions.append(transaction)
+		
 		globalData?.database.mainUser = mainUser
 		self.mainUser = mainUser
+		
 		fetchUserData(request: HomePageModels.UserData.Request())
 		fetchTransactions(request: HomePageModels.Transactions.Request())
 	}
