@@ -2,12 +2,13 @@
 **Назначение модуля**
 	Модуль предназначен для определения глобальной модели данных в приложении. Приложение основано на транзакиях между пользователями, поэтому этот модуль описывает основные структуры.
 
-
 **Структура**
 	- struct User: отвечает за модель описывающую данные пользователя.
 	- struct Transaction: отвечает за модель описывающую данные транзакции между польователями.
 	- struct MainUser: отвечает за модель описывающую данные основного польователя приложения.
 	- struct DataBase: отвечает за модель общей базы пользователей.
+
+
 
 ## Модуль **Welcome Screen**
 **Назначение модуля**
@@ -35,6 +36,7 @@
 	 - WelcomeScreenPresenter вызывает viewController?.displayRegistrationScreen().
 	 - WelcomeScreenViewController вызывает router.routeToRegistrationScreen().
 	 - WelcomeScreenRouter выполняет переход на RegistrationViewController.
+
 
 	 
 ## Модуль **Registration Screen**
@@ -64,7 +66,6 @@
 	- RegistrationInteractor проверяет данные и вызывает presenter?.presentHomePage(response: response) или presenter?.presentAlert(response: response).
 	- RegistrationPresenter вызывает viewController?.displayHomePage() или viewController?.displayAlert(viewModel: viewModel).
 	- RegistrationViewController использует роутер для навигации на HomePageScreen или отображает сообщение об ошибке.
-
 
 
 

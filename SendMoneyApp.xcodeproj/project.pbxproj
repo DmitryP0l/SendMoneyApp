@@ -12,12 +12,19 @@
 		0A0259112CBECB2D009C22C2 /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259102CBECB2D009C22C2 /* RegistrationPresenter.swift */; };
 		0A0259132CBED0B2009C22C2 /* RegistrationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259122CBED0B2009C22C2 /* RegistrationRouter.swift */; };
 		0A0259182CD127DB009C22C2 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259172CD127DB009C22C2 /* DataModel.swift */; };
+		0A02591A2CD15FFD009C22C2 /* HomePageModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259192CD15FFD009C22C2 /* HomePageModels.swift */; };
+		0A02591C2CD162C1009C22C2 /* HomePageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02591B2CD162C1009C22C2 /* HomePageInteractor.swift */; };
+		0A02591E2CD165FC009C22C2 /* HomePagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02591D2CD165FC009C22C2 /* HomePagePresenter.swift */; };
+		0A0259202CD16DAF009C22C2 /* HomePageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A02591F2CD16DAF009C22C2 /* HomePageRouter.swift */; };
+		0A0259232CD2A5E6009C22C2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259222CD2A5E6009C22C2 /* DataManager.swift */; };
+		0A0259262CDA1F06009C22C2 /* BusinessLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0259252CDA1F06009C22C2 /* BusinessLogic.swift */; };
 		0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */; };
 		0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */; };
 		0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */; };
 		0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */; };
 		0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */; };
 		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
+		0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
 		0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */; };
@@ -56,14 +63,21 @@
 		0A02590E2CBEC9CF009C22C2 /* RegistrationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationInteractor.swift; sourceTree = "<group>"; };
 		0A0259102CBECB2D009C22C2 /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		0A0259122CBED0B2009C22C2 /* RegistrationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRouter.swift; sourceTree = "<group>"; };
-		0A0259152CD0F0AA009C22C2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0A0259152CD0F0AA009C22C2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = "SendMoneyApp/Support Files/README.md"; sourceTree = "<group>"; };
 		0A0259172CD127DB009C22C2 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		0A0259192CD15FFD009C22C2 /* HomePageModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModels.swift; sourceTree = "<group>"; };
+		0A02591B2CD162C1009C22C2 /* HomePageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageInteractor.swift; sourceTree = "<group>"; };
+		0A02591D2CD165FC009C22C2 /* HomePagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePagePresenter.swift; sourceTree = "<group>"; };
+		0A02591F2CD16DAF009C22C2 /* HomePageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageRouter.swift; sourceTree = "<group>"; };
+		0A0259222CD2A5E6009C22C2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		0A0259252CDA1F06009C22C2 /* BusinessLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLogic.swift; sourceTree = "<group>"; };
 		0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		0A0F82AF2C90882100E518CA /* HomePageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewCell.swift; sourceTree = "<group>"; };
 		0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionInfoModel.swift; sourceTree = "<group>"; };
 		0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewCell.swift; sourceTree = "<group>"; };
 		0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageProtocols.swift; sourceTree = "<group>"; };
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +123,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A0259242CD2AFBA009C22C2 /* BusinessLogicModule */ = {
+			isa = PBXGroup;
+			children = (
+				0A0259172CD127DB009C22C2 /* DataModel.swift */,
+				0A0259222CD2A5E6009C22C2 /* DataManager.swift */,
+				0A0259252CDA1F06009C22C2 /* BusinessLogic.swift */,
+			);
+			path = BusinessLogicModule;
+			sourceTree = "<group>";
+		};
 		0A0F82AE2C9087CB00E518CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +148,6 @@
 				0ACE33A22CA33BDD009524C9 /* GeneratePerson.swift */,
 				0A0F82B62C934E7F00E518CA /* TransactionInfoModel.swift */,
 				0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */,
-				0A0259172CD127DB009C22C2 /* DataModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				0AB6070B2C749BCE001916AE /* SendMoneyApp */,
+				0A0259152CD0F0AA009C22C2 /* README.md */,
 				0AB607222C749BD3001916AE /* SendMoneyAppTests */,
 				0AB6072C2C749BD3001916AE /* SendMoneyAppUITests */,
 				0AB6070A2C749BCE001916AE /* Products */,
@@ -152,6 +176,7 @@
 		0AB6070B2C749BCE001916AE /* SendMoneyApp */ = {
 			isa = PBXGroup;
 			children = (
+				0A0259242CD2AFBA009C22C2 /* BusinessLogicModule */,
 				0ACE33A42CB2BF1E009524C9 /* WelcomeScreen */,
 				0ACE33A52CB2BF43009524C9 /* RegistrationScreen */,
 				0ACE33A62CB2BF71009524C9 /* HomePageScreen */,
@@ -187,7 +212,6 @@
 			children = (
 				0AB6070C2C749BCE001916AE /* AppDelegate.swift */,
 				0AB6070E2C749BCE001916AE /* SceneDelegate.swift */,
-				0A0259152CD0F0AA009C22C2 /* README.md */,
 				0AB607152C749BD2001916AE /* Assets.xcassets */,
 				0AB607172C749BD2001916AE /* LaunchScreen.storyboard */,
 			);
@@ -220,6 +244,11 @@
 		0ACE33A62CB2BF71009524C9 /* HomePageScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */,
+				0A0259192CD15FFD009C22C2 /* HomePageModels.swift */,
+				0A02591B2CD162C1009C22C2 /* HomePageInteractor.swift */,
+				0A02591D2CD165FC009C22C2 /* HomePagePresenter.swift */,
+				0A02591F2CD16DAF009C22C2 /* HomePageRouter.swift */,
 				0A0F82A82C8D8DAB00E518CA /* HomePageViewController.swift */,
 			);
 			path = HomePageScreen;
@@ -375,21 +404,28 @@
 				0A0259112CBECB2D009C22C2 /* RegistrationPresenter.swift in Sources */,
 				0ACE33AC2CB2E00F009524C9 /* WelcomeScreenPresenter.swift in Sources */,
 				0A02590D2CBEBB07009C22C2 /* RegistrationModels.swift in Sources */,
+				0A02591A2CD15FFD009C22C2 /* HomePageModels.swift in Sources */,
 				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0A0259182CD127DB009C22C2 /* DataModel.swift in Sources */,
+				0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */,
+				0A02591E2CD165FC009C22C2 /* HomePagePresenter.swift in Sources */,
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
 				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
 				0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */,
+				0A0259232CD2A5E6009C22C2 /* DataManager.swift in Sources */,
 				0A02590F2CBEC9CF009C22C2 /* RegistrationInteractor.swift in Sources */,
 				0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */,
 				0A0259132CBED0B2009C22C2 /* RegistrationRouter.swift in Sources */,
 				0ACE33AF2CB2E043009524C9 /* WelcomeScreenRouter.swift in Sources */,
 				0ACE33AA2CB2DF8E009524C9 /* WelcomeScreenInteractor.swift in Sources */,
 				0AE9E5742CA2C6190083B615 /* PersonalPageViewController.swift in Sources */,
+				0A02591C2CD162C1009C22C2 /* HomePageInteractor.swift in Sources */,
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
+				0A0259262CDA1F06009C22C2 /* BusinessLogic.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
 				0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */,
 				0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */,
+				0A0259202CD16DAF009C22C2 /* HomePageRouter.swift in Sources */,
 				0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
