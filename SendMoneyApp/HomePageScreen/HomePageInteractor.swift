@@ -17,19 +17,19 @@ final class HomePageInteractor: HomePageBussinessLogic {
 		self.globalData = globalData
 		self.mainUser = globalData.database.mainUser
 	}
-	
+	/// Метод для получения данных пользователя из глобального БД и передачи в presenter
 	func fetchUserData(request: HomePageModels.UserData.Request) {
 		guard let mainUser = mainUser else { return }
 		let response = HomePageModels.UserData.Response(mainUser: mainUser)
 		presenter?.presentUserData(response: response)
 	}
-	
+	/// Метод для получения списка транзакций из глобального БД и передачи в presenter
 	func fetchTransactions(request: HomePageModels.Transactions.Request) {
 		guard let mainUser = mainUser else { return }
 		let response = HomePageModels.Transactions.Response(transactions: mainUser.transactions)
 		presenter?.presentTransactions(response: response)
 	}
-	
+	/// Метод для добавления средств на счет основного пользователя и внесения данных о транзакции в БД
 	func addMoney(request: HomePageModels.AddMoney.Request) {
 		guard var mainUser = mainUser else { return }
 		mainUser.user.balance += request.amount

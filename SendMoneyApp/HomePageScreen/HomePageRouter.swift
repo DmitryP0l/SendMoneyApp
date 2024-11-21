@@ -12,6 +12,7 @@ import UIKit
 final class HomePageRouter: HomePageRoutingLogic {
 	weak var viewController: UIViewController?
 	
+	/// Метод для перехода на экран списка контактов
 	func routeToContacts() {
 		let contactListVC = ContactListViewController()
 		viewController?.navigationController?.pushViewController(contactListVC, animated: true)

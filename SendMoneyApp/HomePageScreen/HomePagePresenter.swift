@@ -12,6 +12,7 @@ final class HomePagePresenter: HomePagePresentationLogic {
 	
 	weak var viewController: HomePageDisplayLogic?
 	
+	/// Метод для подготовки данных пользователя для отображения и передачи их ViewController
 	func presentUserData(response: HomePageModels.UserData.Response) {
 		let viewModel = HomePageModels.UserData.ViewModel(
 			mainUserName: response.mainUser.user.name,
@@ -20,6 +21,7 @@ final class HomePagePresenter: HomePagePresentationLogic {
 		viewController?.displayUserData(viewModel: viewModel)
 	}
 	
+	/// Метод для подготовки списка транзакций для отображения и передачи их ViewController
 	func presentTransactions(response: HomePageModels.Transactions.Response) {
 		let displayedTransactions = response.transactions.map { transaction in
 			HomePageModels.Transactions.ViewModel.DisplayedTransaction(

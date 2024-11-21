@@ -105,6 +105,7 @@ final class HomePageViewController: UIViewController {
 		fetchTransactions()
 	}
 	// MARK: - Private methods UI
+	/// Общий метод для настройки пользовательского интерфейса
 	private func setupUI() {
 		navigationItem.hidesBackButton = false //  убирает кнопку "назад" из навбара. в релизе - true
 		view.backgroundColor = .darkGray
@@ -212,6 +213,7 @@ final class HomePageViewController: UIViewController {
 	
 	// MARK: - Private methods
 	
+	/// Метод для настройки связей между компонентами VIP цикла
 	private func setupScene() {
 		let viewController = self
 		let interactor = HomePageInteractor(globalData: GlobalData())
@@ -225,11 +227,13 @@ final class HomePageViewController: UIViewController {
 		router.viewController = viewController
 	}
 	
+	/// Метод для запроса данных пользователя у interactor
 	private func fetchUserData() {
 		let request = HomePageModels.UserData.Request()
 		interactor?.fetchUserData(request: request)
 	}
 	
+	/// Метод для запроса данных о транзакциях у interactor
 	private func fetchTransactions() {
 		let request = HomePageModels.Transactions.Request()
 		interactor?.fetchTransactions(request: request)
@@ -262,7 +266,7 @@ final class HomePageViewController: UIViewController {
 		present(alertController, animated: true)
 	}
 	
-	/// вызывает метод интерактора showContacts на тап по кнопке contactsButton.
+	/// Метод вызывает метод роутера на тап по кнопке contactsButton.
 	@objc private func contactsButtonTapped() {
 		router?.routeToContacts()
 	}
@@ -270,12 +274,14 @@ final class HomePageViewController: UIViewController {
 
 // MARK: - extension HomePageDisplayLogic
 extension HomePageViewController: HomePageDisplayLogic {
+	/// Метод, отображающий данные пользователя
 	func displayUserData(viewModel: HomePageModels.UserData.ViewModel) {
 		userNameLabel.text = "Hello, \(viewModel.mainUserName)"
 		currentBalanceLabel.text = "Balance \(viewModel.mainUserBalance)"
 		tableView.reloadData()
 	}
 	
+	/// Метод, отображающий список транзакций
 	func displayTransactions(viewModel: HomePageModels.Transactions.ViewModel) {
 		displayedTransactions = viewModel.displayedTransactions
 		tableView.reloadData()
