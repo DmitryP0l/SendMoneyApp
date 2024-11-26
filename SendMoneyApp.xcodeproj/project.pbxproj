@@ -25,6 +25,11 @@
 		0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */; };
 		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
 		0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */; };
+		0A658A7B2CF63FCB00F06F81 /* ContactListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A7A2CF63FCB00F06F81 /* ContactListProtocols.swift */; };
+		0A658A7D2CF63FF700F06F81 /* ContactListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A7C2CF63FF700F06F81 /* ContactListModels.swift */; };
+		0A658A7F2CF6401700F06F81 /* ContactListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A7E2CF6401700F06F81 /* ContactListInteractor.swift */; };
+		0A658A822CF6404100F06F81 /* ContactListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A812CF6404100F06F81 /* ContactListPresenter.swift */; };
+		0A658A842CF6407600F06F81 /* ContactListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A832CF6407600F06F81 /* ContactListRouter.swift */; };
 		0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070C2C749BCE001916AE /* AppDelegate.swift */; };
 		0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB6070E2C749BCE001916AE /* SceneDelegate.swift */; };
 		0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB607102C749BCE001916AE /* WelcomeScreenViewController.swift */; };
@@ -78,6 +83,11 @@
 		0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewCell.swift; sourceTree = "<group>"; };
 		0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
 		0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageProtocols.swift; sourceTree = "<group>"; };
+		0A658A7A2CF63FCB00F06F81 /* ContactListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListProtocols.swift; sourceTree = "<group>"; };
+		0A658A7C2CF63FF700F06F81 /* ContactListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModels.swift; sourceTree = "<group>"; };
+		0A658A7E2CF6401700F06F81 /* ContactListInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListInteractor.swift; sourceTree = "<group>"; };
+		0A658A812CF6404100F06F81 /* ContactListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListPresenter.swift; sourceTree = "<group>"; };
+		0A658A832CF6407600F06F81 /* ContactListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListRouter.swift; sourceTree = "<group>"; };
 		0AB607092C749BCE001916AE /* SendMoneyApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SendMoneyApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0AB6070C2C749BCE001916AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0AB6070E2C749BCE001916AE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -257,6 +267,11 @@
 		0ACE33A72CB2BF9B009524C9 /* ContactListScreen */ = {
 			isa = PBXGroup;
 			children = (
+				0A658A7A2CF63FCB00F06F81 /* ContactListProtocols.swift */,
+				0A658A7C2CF63FF700F06F81 /* ContactListModels.swift */,
+				0A658A7E2CF6401700F06F81 /* ContactListInteractor.swift */,
+				0A658A812CF6404100F06F81 /* ContactListPresenter.swift */,
+				0A658A832CF6407600F06F81 /* ContactListRouter.swift */,
 				0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */,
 			);
 			path = ContactListScreen;
@@ -402,11 +417,15 @@
 			files = (
 				0A0F82B02C90882100E518CA /* HomePageViewCell.swift in Sources */,
 				0A0259112CBECB2D009C22C2 /* RegistrationPresenter.swift in Sources */,
+				0A658A7B2CF63FCB00F06F81 /* ContactListProtocols.swift in Sources */,
+				0A658A7F2CF6401700F06F81 /* ContactListInteractor.swift in Sources */,
+				0A658A7D2CF63FF700F06F81 /* ContactListModels.swift in Sources */,
 				0ACE33AC2CB2E00F009524C9 /* WelcomeScreenPresenter.swift in Sources */,
 				0A02590D2CBEBB07009C22C2 /* RegistrationModels.swift in Sources */,
 				0A02591A2CD15FFD009C22C2 /* HomePageModels.swift in Sources */,
 				0A0F82BA2C937B2A00E518CA /* ContactListViewController.swift in Sources */,
 				0A0259182CD127DB009C22C2 /* DataModel.swift in Sources */,
+				0A658A822CF6404100F06F81 /* ContactListPresenter.swift in Sources */,
 				0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */,
 				0A02591E2CD165FC009C22C2 /* HomePagePresenter.swift in Sources */,
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
@@ -423,6 +442,7 @@
 				0AB6070D2C749BCE001916AE /* AppDelegate.swift in Sources */,
 				0A0259262CDA1F06009C22C2 /* BusinessLogic.swift in Sources */,
 				0AB6073D2C87554B001916AE /* RegistrationViewController.swift in Sources */,
+				0A658A842CF6407600F06F81 /* ContactListRouter.swift in Sources */,
 				0A0F82A92C8D8DAB00E518CA /* HomePageViewController.swift in Sources */,
 				0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */,
 				0A0259202CD16DAF009C22C2 /* HomePageRouter.swift in Sources */,
