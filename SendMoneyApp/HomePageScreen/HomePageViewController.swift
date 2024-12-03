@@ -95,10 +95,7 @@ final class HomePageViewController: UIViewController {
 	// MARK: - Lifecycle
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.delegate = self
-		tableView.dataSource = self
-		tableView.register(HomePageViewCell.self, forCellReuseIdentifier: HomePageViewCell.identifier)
-		tableView.tableHeaderView = createTableHeaderView()
+		
 		setupUI()
 		setupScene()
 		fetchUserData()
@@ -133,7 +130,7 @@ final class HomePageViewController: UIViewController {
 		return headerView
 	}
 	
-	//MARK: - Setup constrains
+	//MARK: - Setup constrains UI elements
 	/// Настройка ограничений (constrains) для userInfoContainerView
 	private func setupUserInfoContainerView() {
 		view.addSubview(userInfoContainerView)
@@ -148,6 +145,11 @@ final class HomePageViewController: UIViewController {
 	}
 	/// Настройка ограничений (constrains) для tableViewContainerView
 	private func setupTableView() {
+		tableView.delegate = self
+		tableView.dataSource = self
+		tableView.register(HomePageViewCell.self, forCellReuseIdentifier: HomePageViewCell.identifier)
+		tableView.tableHeaderView = createTableHeaderView()
+		
 		view.addSubview(tableView)
 		
 		NSLayoutConstraint.activate([

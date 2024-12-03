@@ -19,8 +19,12 @@ protocol ContactListPresentationLogic {
 	func presentUsers(response: ContactList.Users.Response)
 }
 
-protocol ContactLisrRoutingLogic {
+protocol ContactListRoutingLogic {
 	func routeToPersonalPage(user: User)
+}
+
+protocol ContactListDataPassing {
+	var DataStore: ContactListDataStore? { get }
 }
 
 protocol ContactListDataStore {
