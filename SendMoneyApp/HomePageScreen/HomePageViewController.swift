@@ -12,7 +12,7 @@ final class HomePageViewController: UIViewController {
 	// MARK: - Internal properties
 	var interactor: HomePageBussinessLogic?
 	private var router: HomePageRoutingLogic?
-	var displayedTransactions: [HomePageModels.Transactions.ViewModel.DisplayedTransaction] = []
+	private var displayedTransactions: [HomePageModels.Transactions.ViewModel.DisplayedTransaction] = []
 	
 	// MARK: - Constants
 	/// инициализация и настройка UI элементов

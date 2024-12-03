@@ -12,8 +12,8 @@ final class ContactListViewController: UIViewController {
 	// MARK: - Constants
 	var interactor: ContactListBusinessLogic?
 	var router: ContactListRoutingLogic?
-	var displayedUsers: [ContactList.Users.ViewModel.DisplayedUser] = []
-	//private var filteredDisplayedUsers = [ContactList.Users.ViewModel.DisplayedUser]()
+	private var displayedUsers: [ContactList.Users.ViewModel.DisplayedUser] = []
+	private var filteredDisplayedUsers = [ContactList.Users.ViewModel.DisplayedUser]()
 	
 	// MARK: - UI Constants
 	/// инициализация и настройка UI элементов
@@ -53,6 +53,7 @@ final class ContactListViewController: UIViewController {
 		setupUI()
 		setupScene()
 		fetchUsers()
+		setFilteredDisplayedUsers()
 	}
 	
 	// MARK: - Private methods
@@ -62,7 +63,6 @@ final class ContactListViewController: UIViewController {
 		view.backgroundColor = .gray
 		setupContactListTableView()
 		setupHeaderLabel()
-		//setFilteredDisplayedUsers()
 	}
 	
 	/// Настройка ограничений (constrains). Инициализация делегата, источника данных и регистрация ячейки для contactListTableView
@@ -114,7 +114,7 @@ final class ContactListViewController: UIViewController {
 	}
 	
 	private func setFilteredDisplayedUsers() {
-		//filteredDisplayedUsers = displayedUsers
+		filteredDisplayedUsers = displayedUsers
 	}
 }
 // MARK: - extension ContactListDisplayLogic
@@ -129,12 +129,12 @@ extension ContactListViewController: ContactListDisplayLogic {
 /// Метод определяющий количество ячеек.
 extension ContactListViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return displayedUsers.count
+		return filteredDisplayedUsers.count
 	}
 	/// Метод создания и настройки ячейки. Передача информации в поля ячейки из массива filteredContactsDataSource
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: ContactListViewCell.identifier, for: indexPath) as! ContactListViewCell
-		let contact = displayedUsers[indexPath.row]
+		let contact = filteredDisplayedUsers[indexPath.row]
 		cell.personImageView.image = UIImage(systemName: contact.image)
 		cell.personNameLabel.text = contact.name
 		return cell
@@ -154,13 +154,12 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 extension ContactListViewController: UISearchBarDelegate {
 	/// метод, отрабатывающий поиск по основному массиву контактов и наполняющий массив отфильтрованных контактов
 	func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//		filteredDisplayedUsers = []
-//		if searchText.isEmpty {
-//			filteredDisplayedUsers = displayedUsers
-//		} else {
-//			filteredDisplayedUsers = displayedUsers.filter {
-//				$0.name.lowercased().contains(searchText.lowercased())}
-//		}
-//		contactListTableView.reloadData()
+		if searchText.isEmpty {
+			filteredDisplayedUsers = displayedUsers
+		} else {
+			filteredDisplayedUsers = displayedUsers.filter {
+				$0.name.lowercased().contains(searchText.lowercased())}
+		}
+		contactListTableView.reloadData()
 	}
 }
