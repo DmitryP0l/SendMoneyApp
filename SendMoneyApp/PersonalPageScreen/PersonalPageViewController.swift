@@ -13,6 +13,8 @@ final class PersonalPageViewController: UIViewController {
 	private var interactor: PersonalPageBusinessLogic?
 	private var router: PersonalPageDataPassing?
 	private var user: User?
+	private var globalData: GlobalData
+	private var businessLogic: BusinessLogic
 	
 	// MARK: - Constants UI
 	/// инициализация и настройка UI элементов
@@ -92,9 +94,11 @@ final class PersonalPageViewController: UIViewController {
 	}()
 	
 	// MARK: - init
-	init(user: User) {
-		super.init(nibName: nil, bundle: nil)
+	init(user: User, businessLogic: BusinessLogic, globalData: GlobalData) {
 		self.user = user
+		self.businessLogic = businessLogic
+		self.globalData = globalData
+		super.init(nibName: nil, bundle: nil)
 	}
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
@@ -104,8 +108,8 @@ final class PersonalPageViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		setupScreen()
-		setupScene()
 		fetchUserData()
+		setupScene(businessLogic: businessLogic, globalData: globalData)
 	}
 	// MARK: - Private methods
 	///  Метод настройки всего экрана регистрации
@@ -120,9 +124,9 @@ final class PersonalPageViewController: UIViewController {
 		setupRequestMoneyButton()
 	}
 	
-	private func setupScene() {
+	private func setupScene(businessLogic: BusinessLogic, globalData: GlobalData) {
 		let viewController = self
-		let interactor = PersonalPageInteractor(globalData: GlobalData())
+		let interactor = PersonalPageInteractor(globalData: globalData)
 		let presenter = PersonalPagePresenter()
 		let router = PersonalPageRouter()
 		
@@ -275,6 +279,5 @@ extension PersonalPageViewController: PersonalPageDisplayLogic {
 		currentBalanceLabel.text = "\(viewModel.balance)"
 	}
 }
-//  реализовать переход на personal Page
-// проверить роутер в контакт лист для передач
-//  проверить реализацию отправки денег другому юзеру, если ок реализовать запрос у юзера
+
+//   доделать реализацию отправки денег другому юзеру, если ок реализовать запрос у юзера

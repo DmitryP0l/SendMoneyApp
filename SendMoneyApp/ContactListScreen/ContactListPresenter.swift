@@ -12,7 +12,12 @@ final class ContactListPresenter: ContactListPresentationLogic {
 	
 	func presentUsers(response: ContactList.Users.Response) {
 		let displayUsers = response.users.map { user in
-			ContactList.Users.ViewModel.DisplayedUser(name: user.name, image: user.image)
+			ContactList.Users.ViewModel.DisplayedUser(
+				id: user.id,
+				name: user.name,
+				image: user.image,
+				balance: user.balance
+			)
 		}
 		let viewModel = ContactList.Users.ViewModel(displayedUsers: displayUsers)
 		viewController?.displayUsers(viewModel: viewModel)

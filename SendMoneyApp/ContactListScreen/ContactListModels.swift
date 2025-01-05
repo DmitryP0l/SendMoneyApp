@@ -15,8 +15,10 @@ enum ContactList {
 		}
 		struct ViewModel {
 			struct DisplayedUser {
+				var id: UUID
 				var name: String
 				var image: String
+				var balance: Int
 			}
 			var displayedUsers: [DisplayedUser]
 		}

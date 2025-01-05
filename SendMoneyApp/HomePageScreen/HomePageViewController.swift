@@ -305,7 +305,6 @@ extension HomePageViewController: UITableViewDelegate, UITableViewDataSource {
 	}
 }
 	//важное
-///  переделать контакты на  cleanSwift
 /// сделать передачу средств между всеми контактами
 
 /// разобраться с заполнением ячейки на главном экране, дополнить ярлыком даты, номером id транзакции, и тд

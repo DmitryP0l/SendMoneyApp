@@ -57,14 +57,12 @@ final class ContactListViewController: UIViewController {
 	}
 	
 	// MARK: - Private methods
-	
 	///  Метод настройки всего экрана ContactListViewController. Назначение пустому массиву filteredContactsDataSource значений основного массива. Необходимо потому, что в начале, пока поле поиска пустое, эти массивы идентичны. в дальнейшем массив filteredContactsDataSource будет менять количество значений в зависимости от желаемого поиска и вводимых символов в поисковую строку
 	private func setupUI() {
 		view.backgroundColor = .gray
 		setupContactListTableView()
 		setupHeaderLabel()
 	}
-	
 	/// Настройка ограничений (constrains). Инициализация делегата, источника данных и регистрация ячейки для contactListTableView
 	private func setupContactListTableView() {
 		
@@ -139,15 +137,14 @@ extension ContactListViewController: UITableViewDelegate, UITableViewDataSource 
 		cell.personNameLabel.text = contact.name
 		return cell
 	}
-//	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на PersonalPageViewController
-//	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//		
-//		tableView.deselectRow(at: indexPath, animated: true)
-//		
-//		let detailContactVC = PersonalPageViewController()
-//		detailContactVC.person = filteredDisplayedUsers
-//		navigationController?.pushViewController(detailContactVC, animated: true)
-//	}
+	///Метод определяющий действие по нажатию на ячейку. Снято нажатие. Реализован переход на PersonalPageViewController
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		
+		tableView.deselectRow(at: indexPath, animated: true)
+		let filteredUser = filteredDisplayedUsers[indexPath.row]
+		let user = User(id: filteredUser.id, name: filteredUser.name, image: filteredUser.image, balance: filteredUser.balance)
+		router?.routeToPersonalPage(user: user)
+	}
 }
 
 //MARK: - extension UISearchResultsUpdating

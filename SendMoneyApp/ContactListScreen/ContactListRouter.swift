@@ -12,7 +12,7 @@ final class ContactListRouter: ContactListRoutingLogic, ContactListDataPassing {
 	var DataStore: ContactListDataStore?
 	
 	func routeToPersonalPage(user: User) {
-		let personalPageVC = PersonalPageViewController()  /// здесь прописать  перенос данных
+		let personalPageVC = PersonalPageViewController(user: user, businessLogic: BusinessLogicModule(globalData: GlobalData()), globalData: GlobalData())/// здесь прописать  перенос данных
 		viewController?.navigationController?.pushViewController(personalPageVC, animated: true)
 	}
 }
