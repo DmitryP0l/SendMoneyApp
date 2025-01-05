@@ -12,6 +12,7 @@ final class PersonalPageViewController: UIViewController {
 	// MARK: - Constants
 	private var interactor: PersonalPageBusinessLogic?
 	private var router: PersonalPageDataPassing?
+	
 	private var user: User?
 	private var globalData: GlobalData
 	private var businessLogic: BusinessLogic
@@ -59,7 +60,6 @@ final class PersonalPageViewController: UIViewController {
 	private var currentBalanceLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "100.000"
 		label.textAlignment = .center
 		label.textColor = .white
 		label.font = label.font.withSize(36)
@@ -94,7 +94,7 @@ final class PersonalPageViewController: UIViewController {
 	}()
 	
 	// MARK: - init
-	init(user: User, businessLogic: BusinessLogic, globalData: GlobalData) {
+	init(user: User, businessLogic: BusinessLogic, globalData: GlobalData) { // замена BusinessLogic
 		self.user = user
 		self.businessLogic = businessLogic
 		self.globalData = globalData
@@ -135,6 +135,9 @@ final class PersonalPageViewController: UIViewController {
 		presenter.viewController = viewController
 		viewController.router = router
 		router.viewController = viewController
+		router.dataStore = interactor
+		
+		interactor.user = user
 	}
 	
 	// MARK: - Setup constrains UI Elements
