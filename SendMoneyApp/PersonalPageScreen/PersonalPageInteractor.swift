@@ -41,6 +41,9 @@ final class PersonalPageInteractor: PersonalPageBusinessLogic, PersonalPageDataS
 			mainUser.transactions.append(transaction)
 			
 			globalData?.database.mainUser = mainUser
+			if let index = globalData?.database.otherUsers.firstIndex(where: { $0.id == user.id }) {
+				globalData?.database.otherUsers[index] = user
+			}
 			self.user = user
 			
 			fetchUserData(request: PersonalPage.UserData.Request())
