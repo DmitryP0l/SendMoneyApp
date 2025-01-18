@@ -25,6 +25,9 @@
 		0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */; };
 		0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */; };
 		0A1FBEF02D2D2B5D000EC531 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1FBEEF2D2D2B5D000EC531 /* RealmSwift */; };
+		0A1FBEF22D2D4C31000EC531 /* ModelRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FBEF12D2D4C31000EC531 /* ModelRealm.swift */; };
+		0A1FBEF42D2D52B6000EC531 /* GlobalDataManagerRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FBEF32D2D52B6000EC531 /* GlobalDataManagerRealm.swift */; };
+		0A1FBEF62D3BE0A3000EC531 /* BusinessLogicRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1FBEF52D3BE0A3000EC531 /* BusinessLogicRealm.swift */; };
 		0A658A792CECD2FB00F06F81 /* HomePageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */; };
 		0A658A7B2CF63FCB00F06F81 /* ContactListProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A7A2CF63FCB00F06F81 /* ContactListProtocols.swift */; };
 		0A658A7D2CF63FF700F06F81 /* ContactListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A658A7C2CF63FF700F06F81 /* ContactListModels.swift */; };
@@ -88,6 +91,9 @@
 		0A0F82B92C937B2A00E518CA /* ContactListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewController.swift; sourceTree = "<group>"; };
 		0A0F82BB2C9B44B700E518CA /* ContactListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListViewCell.swift; sourceTree = "<group>"; };
 		0A0F82BD2C9B46CB00E518CA /* PersonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonModel.swift; sourceTree = "<group>"; };
+		0A1FBEF12D2D4C31000EC531 /* ModelRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelRealm.swift; sourceTree = "<group>"; };
+		0A1FBEF32D2D52B6000EC531 /* GlobalDataManagerRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalDataManagerRealm.swift; sourceTree = "<group>"; };
+		0A1FBEF52D3BE0A3000EC531 /* BusinessLogicRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessLogicRealm.swift; sourceTree = "<group>"; };
 		0A658A782CECD2FB00F06F81 /* HomePageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageProtocols.swift; sourceTree = "<group>"; };
 		0A658A7A2CF63FCB00F06F81 /* ContactListProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListProtocols.swift; sourceTree = "<group>"; };
 		0A658A7C2CF63FF700F06F81 /* ContactListModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactListModels.swift; sourceTree = "<group>"; };
@@ -148,6 +154,9 @@
 		0A0259242CD2AFBA009C22C2 /* BusinessLogicModule */ = {
 			isa = PBXGroup;
 			children = (
+				0A1FBEF12D2D4C31000EC531 /* ModelRealm.swift */,
+				0A1FBEF32D2D52B6000EC531 /* GlobalDataManagerRealm.swift */,
+				0A1FBEF52D3BE0A3000EC531 /* BusinessLogicRealm.swift */,
 				0A0259172CD127DB009C22C2 /* DataModel.swift */,
 				0A0259222CD2A5E6009C22C2 /* DataManager.swift */,
 				0A0259252CDA1F06009C22C2 /* BusinessLogic.swift */,
@@ -456,9 +465,11 @@
 				0A0F82BC2C9B44B700E518CA /* ContactListViewCell.swift in Sources */,
 				0A0F82BE2C9B46CB00E518CA /* PersonModel.swift in Sources */,
 				0AB607112C749BCE001916AE /* WelcomeScreenViewController.swift in Sources */,
+				0A1FBEF42D2D52B6000EC531 /* GlobalDataManagerRealm.swift in Sources */,
 				0A0259232CD2A5E6009C22C2 /* DataManager.swift in Sources */,
 				0A70C50D2CFF492200AA002D /* PersonalPageProtocols.swift in Sources */,
 				0A02590F2CBEC9CF009C22C2 /* RegistrationInteractor.swift in Sources */,
+				0A1FBEF22D2D4C31000EC531 /* ModelRealm.swift in Sources */,
 				0ACE33A32CA33BDD009524C9 /* GeneratePerson.swift in Sources */,
 				0A0259132CBED0B2009C22C2 /* RegistrationRouter.swift in Sources */,
 				0ACE33AF2CB2E043009524C9 /* WelcomeScreenRouter.swift in Sources */,
@@ -474,6 +485,7 @@
 				0A0F82B72C934E7F00E518CA /* TransactionInfoModel.swift in Sources */,
 				0A70C5132CFF49A400AA002D /* PersonalPageRouter.swift in Sources */,
 				0A0259202CD16DAF009C22C2 /* HomePageRouter.swift in Sources */,
+				0A1FBEF62D3BE0A3000EC531 /* BusinessLogicRealm.swift in Sources */,
 				0AB6070F2C749BCE001916AE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
